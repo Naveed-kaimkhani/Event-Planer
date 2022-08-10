@@ -1,5 +1,6 @@
 
 import 'package:eventplaner/screens/homePage.dart';
+import 'package:eventplaner/screens/welcomePage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: WelcomePage(),
+      home: WelcomeScreen(),
     );
   }
 }
