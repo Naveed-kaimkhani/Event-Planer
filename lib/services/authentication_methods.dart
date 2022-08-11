@@ -9,7 +9,7 @@ class authentication_methods {
       required String email,
       required String password,
       required String phone,
-      required String address,
+     // required String address,
       
       }) async {
     firstname.trim();
@@ -18,7 +18,7 @@ class authentication_methods {
     phone.trim();
     password.trim();
     String output;
-    if (firstname != "" && lastname != "" && email != "" && phone != "" && password != ""&& address != "") {
+    if (firstname != "" && lastname != "" && email != "" && phone != "" && password != "") {
       try {
         final authResult =
             await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -27,7 +27,7 @@ class authentication_methods {
         );
         output = "SignUp Successfully";
         await Firestore_method.uploadDataToFirestore(
-            firstname: firstname,lastname: lastname, phone: phone,address: address);
+            firstname: firstname,lastname: lastname, phone: phone);
       } on FirebaseAuthException catch (e) {
         output = e.message.toString();
       }

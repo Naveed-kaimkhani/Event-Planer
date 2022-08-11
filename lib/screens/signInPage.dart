@@ -1,26 +1,25 @@
 import 'package:eventplaner/constant/inputfields.dart';
-import 'package:eventplaner/screens/signInPage.dart';
-import 'package:eventplaner/services/authentication_methods.dart';
+import 'package:eventplaner/screens/homePage.dart';
+import 'package:eventplaner/screens/signupPage.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+
 import '../constant/TextField.dart';
 import '../constant/Utils.dart';
 import '../constant/constants.dart';
 
-class SignUp extends StatelessWidget {
-  SignUp({Key? key}) : super(key: key);
-  TextEditingController eController = TextEditingController();
-    TextEditingController LastController = TextEditingController();
+import '../services/authentication_methods.dart';
+import 'forgotpassPage.dart';
 
-  TextEditingController FirstController = TextEditingController();
-  TextEditingController PassController = TextEditingController();
-  TextEditingController PhoneController = TextEditingController();
+class SignIn extends StatelessWidget {
+  SignIn({Key? key}) : super(key: key);
+  TextEditingController eController = TextEditingController();
+  TextEditingController pController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    SizedBox k = SizedBox(
-      height: 20,
-    );
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
@@ -29,9 +28,9 @@ class SignUp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Image.asset('assets/th2.jpeg'),
+              //Image.asset('assets/th2.jpeg'),
               const Text(
-                'Sign Up',
+                'Sign In',
                 style: TextStyle(
                   fontSize: 35.0,
                   fontWeight: FontWeight.w700,
@@ -40,38 +39,21 @@ class SignUp extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              inputfields(
-                  hint_text: "Enter FirstName", controller: FirstController),
-              k,
-              inputfields(
-                  hint_text: "Enter LastName", controller: LastController),
-              k,
               inputfields(hint_text: "Enter Email", controller: eController),
-              k,
-              inputfields(hint_text: "Enter Phone", controller:PhoneController),
-
-              k,
-              inputfields(
-                  hint_text: "Enter Password", controller: PassController),
-              k,
+              const SizedBox(
+                height: 10,
+              ),
+              inputfields(hint_text: "Enter Password", controller: pController),
+              const SizedBox(
+                height: 10,
+              ),
               GestureDetector(
-                onTap: ()async {
-                  
-String output= await authentication_methods.SignupUsers(
-                              firstname: FirstController.text,
-                               lastname: LastController.text,
-                              email: eController.text,
-                              phone: PhoneController.text,
-                              password: PassController.text,
-                            );
-                           if (output=="SignUp Successfully") {
-                               Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (_) => SignIn()));
-                           } else {
-                      Utils.showSnackBar(context: context, content: output.toString());
-
-                           } 
-
+                onTap: () {
+                  Navigator.pushReplacement(
+                      context,
+                      PageTransition(
+                          child: const HomePage(),
+                          type: PageTransitionType.bottomToTop));
                 },
                 child: Container(
                   width: size.width,
@@ -81,14 +63,56 @@ String output= await authentication_methods.SignupUsers(
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                  child: const Center(
-                    child: Text(
-                      'Sign Up',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
+                  child:  Center(
+                    child: GestureDetector(
+                      onTap:() async {
+                      //  authentication_methods
+                           // Future<String> output="something";
+                       String output= await authentication_methods.SignInUsers(
+                              email: eController.text,
+                              password: pController.text,
+                            );
+                          if (output=="SignIn Successfully") {
+                             Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (_) => HomePage()));
+                          } else {
+                            Utils.showSnackBar(context: context, content: output.toString()); 
+                          }
+                           // print(output);
+                        //  Utils.showSnackBar(context: context, content: output.toString());
+                          },
+                      child: Text("Sign In"),
+                    )
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                      context,
+                      PageTransition(
+                          child: const ForgotPassword(),
+                          type: PageTransitionType.bottomToTop));
+                },
+                child: Center(
+                  child: Text.rich(
+                    TextSpan(children: [
+                      TextSpan(
+                        text: 'Forgot Password? ',
+                        style: TextStyle(
+                          color: Constants.blackColor,
+                        ),
                       ),
-                    ),
+                      TextSpan(
+                        text: 'Reset Here',
+                        style: TextStyle(
+                          color: Constants.primaryColor,
+                        ),
+                      ),
+                    ]),
                   ),
                 ),
               ),
@@ -123,7 +147,7 @@ String output= await authentication_methods.SignupUsers(
                       child: Image.asset('assets/google.png'),
                     ),
                     Text(
-                      'Sign Up with Google',
+                      'Sign In with Google',
                       style: TextStyle(
                         color: Constants.blackColor,
                         fontSize: 18.0,
@@ -140,20 +164,20 @@ String output= await authentication_methods.SignupUsers(
                   Navigator.pushReplacement(
                       context,
                       PageTransition(
-                          child:  SignIn(),
+                          child: SignUp(),
                           type: PageTransitionType.bottomToTop));
                 },
                 child: Center(
                   child: Text.rich(
                     TextSpan(children: [
                       TextSpan(
-                        text: 'Have an Account? ',
+                        text: 'New Here ',
                         style: TextStyle(
                           color: Constants.blackColor,
                         ),
                       ),
                       TextSpan(
-                        text: 'Login',
+                        text: 'Register',
                         style: TextStyle(
                           color: Constants.primaryColor,
                         ),

@@ -12,7 +12,7 @@ import '../constant/Utils.dart';
 class Firestore_method{
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-static Future  uploadDataToFirestore({required firstname,required lastname,required phone,required address,}) async{
+static Future  uploadDataToFirestore({required firstname,required lastname,required phone}) async{
 
      await FirebaseFirestore.instance.collection("Users").doc(FirebaseAuth.instance.currentUser!.uid).set(
        
@@ -20,7 +20,7 @@ static Future  uploadDataToFirestore({required firstname,required lastname,requi
         "firstname":firstname,
         "lastname":firstname,
         "phone":phone,
-      "address":address,
+     // "address":address,
       } 
       );
   }

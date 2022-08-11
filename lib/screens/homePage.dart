@@ -1,132 +1,252 @@
-
-
-import 'package:eventplaner/screens/loginPage.dart';
-import 'package:eventplaner/screens/signupPage.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
-class WelcomePage extends StatefulWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+import '../Model/eventModelV2.dart';
+import '../constant/constants.dart';
+import '../widgets/widgets.dart';
+import 'detailsPage.dart';
+
+
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<WelcomePage> createState() => _WelcomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _WelcomePageState extends State<WelcomePage> with TickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<Offset> animation1;
-  late AnimationController _animationController2;
-  late Animation<Offset> animation2;
-
-
-  @override
-  void initState(){
-    super.initState();
-    _animationController = AnimationController(duration: Duration(milliseconds: 1500),vsync: this);
-    animation1 = Tween<Offset>(
-      begin: Offset(0.0,8.0),
-      end: Offset(0.0,0.0),
-    ).animate(CurvedAnimation(parent: _animationController, curve: Curves.bounceOut));
-    _animationController.forward();
-
-    _animationController2 = AnimationController(duration: Duration(milliseconds: 3000),vsync: this);
-    animation2 = Tween<Offset>(
-      begin: Offset(0.0,8.0),
-      end: Offset(0.0,0.0),
-    ).animate(CurvedAnimation(parent: _animationController2, curve: Curves.elasticInOut));
-    _animationController2.forward();
-  }
-  @override
-  void dispose(){
-    super.dispose();
-    _animationController.dispose();
-    _animationController2.dispose();
-  }
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    int selectedIndex = 0;
+    Size size = MediaQuery.of(context).size;
+
+    List<Event> _eventList = Event.eventList;
+
+    //Plants category
+    List<String> _eventTypes = [
+      'Best Planners',
+      'Indoor Events',
+      'Outdoor Events',
+    ];
+
+    //Toggle Favorite button
+    bool toggleIsFavorated(bool isFavorited) {
+      return !isFavorited;
+    }
+
     return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.white, Colors.blue],
-            begin: const FractionalOffset(1, 0),
-            end: const FractionalOffset(1, 0),
-            tileMode: TileMode.repeated,
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
+        body: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 6,
+              Container(
+                padding: const EdgeInsets.only(top: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                      ),
+                      width: size.width * .9,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.search,
+                            color: Colors.black54.withOpacity(.6),
+                          ),
+                          const Expanded(
+                              child: TextField(
+                                showCursor: false,
+                                decoration: InputDecoration(
+                                  hintText: 'Search',
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                ),
+                              )),
+                          Icon(
+                            Icons.mic,
+                            color: Colors.black54.withOpacity(.6),
+                          ),
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                        color: Constants.primaryColor.withOpacity(.1),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    )
+                  ],
+                ),
               ),
-              SlideTransition(
-                position: animation1,
-                child: Text(
-                  "Plan your events with us",
-                  textAlign: TextAlign.center,
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                height: 50.0,
+                width: size.width,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: _eventTypes.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedIndex = index;
+                            });
+                          },
+                          child: Text(
+                            _eventTypes[index],
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: selectedIndex == index
+                                  ? FontWeight.bold
+                                  : FontWeight.w300,
+                              color: selectedIndex == index
+                                  ? Constants.primaryColor
+                                  : Constants.blackColor,
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+              ),
+              SizedBox(
+                height: size.height * .3,
+                child: ListView.builder(
+                    itemCount: _eventList.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (BuildContext context, int index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  child: DetailPage(
+                                    EventId: _eventList[index].eventId,
+                                  ),
+                                  type: PageTransitionType.bottomToTop));
+                        },
+                        child: Container(
+                          width: 200,
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Stack(
+                            children: [
+                              Positioned(
+                                top: 10,
+                                right: 20,
+                                child: Container(
+                                  height: 50,
+                                  width: 50,
+                                  child: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        bool isFavorited = toggleIsFavorated(
+                                            _eventList[index].isFavorated);
+                                        _eventList[index].isFavorated = isFavorited;
+                                      });
+                                    },
+                                    icon: Icon(
+                                      _eventList[index].isFavorated == true
+                                          ? Icons.favorite
+                                          : Icons.favorite_border,
+                                      color: Constants.primaryColor,
+                                    ),
+                                    iconSize: 30,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                left: 50,
+                                right: 50,
+                                top: 50,
+                                bottom: 50,
+                                child: Image.asset(_eventList[index].imageURL),
+                              ),
+                              Positioned(
+                                bottom: 15,
+                                left: 20,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      _eventList[index].category,
+                                      style: const TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    Text(
+                                      _eventList[index].eventName,
+                                      style: const TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 15,
+                                right: 20,
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 2),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Text(
+                                    r'$' + _eventList[index].package.toString(),
+                                    style: TextStyle(
+                                        color: Constants.primaryColor,
+                                        fontSize: 16),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          decoration: BoxDecoration(
+                            color: Constants.primaryColor.withOpacity(.8),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                      );
+                    }),
+              ),
+              Container(
+                padding: const EdgeInsets.only(left: 16, bottom: 20, top: 20),
+                child: const Text(
+                  'Packages',
                   style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 38,
-                    letterSpacing: 2,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.0,
                   ),
                 ),
               ),
-              SizedBox(
-                  height: 30
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                height: size.height * .5,
+                child: ListView.builder(
+                    itemCount: _eventList.length,
+                    scrollDirection: Axis.vertical,
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: (BuildContext context, int index) {
+                      return GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, PageTransition(child: DetailPage(EventId: _eventList[index].eventId), type: PageTransitionType.bottomToTop));
+                          },
+                          child: EventWidget(index: index, eventList: _eventList));
+                    }),
               ),
-              boxContainer("   Sign up with Facebook", Icons.facebook,null),
-              SizedBox(height: 10,),
-              boxContainer("   Sign up with Email", Icons.mail,onEmailClick),
-              SizedBox(height: 30,),
-              SlideTransition(
-                position: animation2,
-                child: Row(children: [
-                  Text("Already have an account?",style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 17,
-                  ),),
-                  InkWell(
-                    onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LoginPage()));
-                    },
-                    child: Text("SignIn",style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 17,
-                    ),),
-                  )
-                ],),
-              )
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  onEmailClick(){
-    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUpPage()));
-  }
-  Widget boxContainer(String text,IconData iconData,onClick){
-    return SlideTransition(
-      position: animation2,
-      child: InkWell(
-        onTap:onClick,
-        child: Container(
-          height: 60,
-          width: MediaQuery.of(context).size.width,
-          child: Card(
-            child: Row(
-              children: [
-                Icon(iconData,color: Colors.black),
-                Text(text,style: TextStyle(fontSize: 16, color: Colors.black87),)
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+        ));
   }
 }
