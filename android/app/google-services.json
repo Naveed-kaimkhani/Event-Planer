@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "566286004212",
+    "project_id": "decorme-33396",
+    "storage_bucket": "decorme-33396.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:566286004212:android:65fac0daf9c8813b9013a1",
+        "android_client_info": {
+          "package_name": "com.example.eventplaner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "566286004212-mpl30i6dcikes30k2onteflp421tk0st.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBirAZvlmvnA2X8zN-z8G3iyis_bjr1mPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "566286004212-mpl30i6dcikes30k2onteflp421tk0st.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
