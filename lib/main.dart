@@ -1,12 +1,15 @@
-
 import 'package:eventplaner/screens/UploadEvent.dart';
 import 'package:eventplaner/screens/signupPage.dart';
+import 'package:eventplaner/services/authentication_methods.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:eventplaner/screens/homePage.dart';
 import 'package:eventplaner/screens/welcomePage.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() async{
+import 'Provider/UserDetailsProvider.dart';
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // print("in main");
   await Firebase.initializeApp();
@@ -18,11 +21,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-//      home: SignUpPage(),
+    return MultiProvider(
+      providers: [
+     ChangeNotifierProvider(create: (_)=>UserDetailsProvider()),
 
-      home: SignUp(),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+    //      home: SignUpPage(),
+    
+        home: WelcomeScreen(),
+      ),
     );
   }
 }

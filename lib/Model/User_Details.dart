@@ -3,21 +3,22 @@ class User_Details {
   String? lastName;
 
   String? phone;
-  String? address;
+//  String? address;
 //String? phone;
 
   User_Details(
       {required this.firstName,
       required this.lastName,
       required this.phone,
-      required this.address});
+  //    required this.address
+  });
 
   Map<String, dynamic> getjson() {
     return {
       "firstname": firstName,
       "lastname": lastName,
       "phone": phone,
-      "address": address,
+  //    "address": address,
     };
   }
 
@@ -25,7 +26,7 @@ class User_Details {
     firstName = json["firstname"];
     lastName = json["lastname"];
     phone = json["phone"];
-    address = json["address"];
+    //address = json["address"];
   }
 
   factory User_Details.getModelFromJson(Map<String, dynamic> json) {
@@ -33,7 +34,7 @@ class User_Details {
       firstName: json["name"],
       lastName: json["name"],
       phone: json["phone"],
-      address: json["address"],
+      //address: json["address"],
     );
   }
 }

@@ -4,7 +4,10 @@ import 'package:eventplaner/constant/inputfields.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 
+import '../Provider/UserDetailsProvider.dart';
 import '../constant/Utils.dart';
 import '../services/Firestore_method.dart';
 
@@ -166,7 +169,7 @@ class _UploadEventState extends State<UploadEvent> {
                 child: GestureDetector(
                   child: const Center(
                       child: Text(
-                    "Upload Event",
+                    "Post Event",
                     style: TextStyle(color: Colors.white),
                   )),
                   onTap: () async {
@@ -195,14 +198,23 @@ class _UploadEventState extends State<UploadEvent> {
                       description: descripontroller.text,
                       charges: double.parse(chargesController.text),
                       Category: categController.text,
-                      SellerName: "blahhh",
+                      SellerName:  Provider.of<UserDetailsProvider>(
+                                                    context,
+                                                    listen: false)
+                                                .userDetails!.firstName??
+                                            "No name",
                       SellerUid: FirebaseAuth.instance.currentUser!.uid,
                     );
 
                     print("prodcut uploaded");
                     if (output == "success") {
-                      Utils.showSnackBar(
-                          context: context, content: "Product Uploaded");
+                   Fluttertoast.showToast(
+        msg: "Event Posted",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM ,// also possible "TOP" and "CENTER"
+        backgroundColor: Colors.grey,
+        textColor: Colors.white
+);
                       print("Showing snackbar");
                     } else {
                       Utils.showSnackBar(context: context, content: output);
