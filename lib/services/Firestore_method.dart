@@ -24,7 +24,7 @@ static Future  uploadDataToFirestore({required firstname,required lastname,requi
       } 
       );
   }
-
+//
  Future<User_Details?> getUserDetails()async {
     DocumentSnapshot snapshot= await firebaseFirestore.collection("Users").doc(firebaseAuth.currentUser!.uid).get();
     User_Details user_details=User_Details.getModelFromJson(snapshot.data() as dynamic);
