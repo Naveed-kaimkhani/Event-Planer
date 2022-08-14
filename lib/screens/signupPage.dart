@@ -10,7 +10,7 @@ import '../constant/constants.dart';
 class SignUp extends StatelessWidget {
   SignUp({Key? key}) : super(key: key);
   TextEditingController eController = TextEditingController();
-    TextEditingController LastController = TextEditingController();
+  TextEditingController LastController = TextEditingController();
 
   TextEditingController FirstController = TextEditingController();
   TextEditingController PassController = TextEditingController();
@@ -29,12 +29,15 @@ class SignUp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Image.asset('assets/th2.jpeg'),
-              const Text(
-                'Sign Up',
-                style: TextStyle(
-                  fontSize: 35.0,
-                  fontWeight: FontWeight.w700,
+              Image.asset('assets/undraw_Mobile_login_re_9ntv.png'),
+              Center(
+                child: const Text(
+                  'Sign Up',
+                  style: TextStyle(
+                    color: Color(0xffBEB6F5),
+                    fontSize: 35.0,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
               const SizedBox(
@@ -48,30 +51,28 @@ class SignUp extends StatelessWidget {
               k,
               inputfields(hint_text: "Enter Email", controller: eController),
               k,
-              inputfields(hint_text: "Enter Phone", controller:PhoneController),
-
+              inputfields(
+                  hint_text: "Enter Phone", controller: PhoneController),
               k,
               inputfields(
                   hint_text: "Enter Password", controller: PassController),
               k,
               GestureDetector(
-                onTap: ()async {
-                  
-String output= await authentication_methods.SignupUsers(
-                              firstname: FirstController.text,
-                               lastname: LastController.text,
-                              email: eController.text,
-                              phone: PhoneController.text,
-                              password: PassController.text,
-                            );
-                           if (output=="SignUp Successfully") {
-                               Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (_) => SignIn()));
-                           } else {
-                      Utils.showSnackBar(context: context, content: output.toString());
-
-                           } 
-
+                onTap: () async {
+                  String output = await authentication_methods.SignupUsers(
+                    firstname: FirstController.text,
+                    lastname: LastController.text,
+                    email: eController.text,
+                    phone: PhoneController.text,
+                    password: PassController.text,
+                  );
+                  if (output == "SignUp Successfully") {
+                    Navigator.pushReplacement(
+                        context, MaterialPageRoute(builder: (_) => SignIn()));
+                  } else {
+                    Utils.showSnackBar(
+                        context: context, content: output.toString());
+                  }
                 },
                 child: Container(
                   width: size.width,
@@ -140,7 +141,7 @@ String output= await authentication_methods.SignupUsers(
                   Navigator.pushReplacement(
                       context,
                       PageTransition(
-                          child:  SignIn(),
+                          child: SignIn(),
                           type: PageTransitionType.bottomToTop));
                 },
                 child: Center(

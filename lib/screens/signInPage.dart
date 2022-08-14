@@ -63,27 +63,26 @@ class SignIn extends StatelessWidget {
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                  child:  Center(
-                    child: GestureDetector(
-                      onTap:() async {
+                  child: Center(
+                      child: GestureDetector(
+                    onTap: () async {
                       //  authentication_methods
-                           // Future<String> output="something";
-                       String output= await authentication_methods.SignInUsers(
-                              email: eController.text,
-                              password: pController.text,
-                            );
-                          if (output=="SignIn Successfully") {
-                             Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (_) => HomePage()));
-                          } else {
-                            Utils.showSnackBar(context: context, content: output.toString()); 
-                          }
-                           // print(output);
-                        //  Utils.showSnackBar(context: context, content: output.toString());
-                          },
-                      child: Text("Sign In"),
-                    )
-                  ),
+                      // Future<String> output="something";
+                      String output = await authentication_methods.SignInUsers(
+                        email: eController.text,
+                        password: pController.text,
+                      );
+                      //    if (output=="SignIn Successfully") {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (_) => HomePage()));
+                      // } else {
+                      //   Utils.showSnackBar(context: context, content: output.toString());
+                      // }
+                      // print(output);
+                      //  Utils.showSnackBar(context: context, content: output.toString());
+                    },
+                    child: Text("Sign In"),
+                  )),
                 ),
               ),
               const SizedBox(

@@ -17,7 +17,7 @@ class inputfields extends StatelessWidget {
         horizontal: 10,
       ),
       width: width * 0.8,
-      
+
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
         color: Colors.purple[200],
@@ -26,7 +26,7 @@ class inputfields extends StatelessWidget {
       // ignore: prefer_const_constructors
       child: TextField(
         controller: controller,
-        cursorColor: Colors.purple,
+        cursorColor: Colors.white,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: hint_text,

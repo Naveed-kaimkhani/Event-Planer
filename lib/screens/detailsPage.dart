@@ -98,7 +98,10 @@ class _DetailPageState extends State<DetailPage> {
                     left: 0,
                     child: SizedBox(
                       height: 350,
-                      child: Image.asset(_eventList[widget.EventId].imageURL),
+                      child: Image.asset(
+                        _eventList[widget.EventId].imageURL,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ],
@@ -142,7 +145,8 @@ class _DetailPageState extends State<DetailPage> {
                             height: 10,
                           ),
                           Text(
-                            r'$' + _eventList[widget.EventId].package.toString(),
+                            r'$' +
+                                _eventList[widget.EventId].package.toString(),
                             style: TextStyle(
                               color: Constants.blackColor,
                               fontSize: 24.0,

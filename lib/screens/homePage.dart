@@ -1,3 +1,5 @@
+import 'package:eventplaner/Model/sellermodel.dart';
+import 'package:eventplaner/screens/eventtype.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -5,7 +7,6 @@ import '../Model/eventModelV2.dart';
 import '../constant/constants.dart';
 import '../widgets/widgets.dart';
 import 'detailsPage.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,20 +22,68 @@ class _HomePageState extends State<HomePage> {
     Size size = MediaQuery.of(context).size;
 
     List<Event> _eventList = Event.eventList;
+    List<Seller> _sellerList = Seller.sellerList;
 
-    //Plants category
     List<String> _eventTypes = [
-      'Best Planners',
+      'Top Planners',
       'Indoor Events',
       'Outdoor Events',
     ];
 
-    //Toggle Favorite button
-    bool toggleIsFavorated(bool isFavorited) {
-      return !isFavorited;
-    }
-
     return Scaffold(
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(40.0),
+            child: AppBar(
+              backgroundColor: Colors.purple,
+            )),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              AppBar(
+                title: Text(""),
+                backgroundColor: Colors.purple,
+              ),
+              ListTile(
+                //menu item of Drawer
+                leading: Icon(Icons.account_box),
+                title: Text('Account'),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: Icon(Icons.account_circle),
+                title: Text('My Profile'),
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('Account Settings'),
+              ),
+              ListTile(
+                  leading: Icon(Icons.event),
+                  title: Text('Event Type'),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            child: const EventType(),
+                            type: PageTransitionType.bottomToTop));
+                  }),
+              SizedBox(
+                height: 250,
+              ),
+              Container(
+                width: 200,
+                height: 100,
+                decoration: BoxDecoration(
+                  image: new DecorationImage(
+                    image: AssetImage("assets/undraw_Mobile_login_re_9ntv.png"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,13 +108,13 @@ class _HomePageState extends State<HomePage> {
                           ),
                           const Expanded(
                               child: TextField(
-                                showCursor: false,
-                                decoration: InputDecoration(
-                                  hintText: 'Search',
-                                  border: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                ),
-                              )),
+                            showCursor: false,
+                            decoration: InputDecoration(
+                              hintText: 'Search',
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                            ),
+                          )),
                           Icon(
                             Icons.mic,
                             color: Colors.black54.withOpacity(.6),
@@ -134,39 +183,11 @@ class _HomePageState extends State<HomePage> {
                           child: Stack(
                             children: [
                               Positioned(
-                                top: 10,
-                                right: 20,
-                                child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  child: IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        bool isFavorited = toggleIsFavorated(
-                                            _eventList[index].isFavorated);
-                                        _eventList[index].isFavorated = isFavorited;
-                                      });
-                                    },
-                                    icon: Icon(
-                                      _eventList[index].isFavorated == true
-                                          ? Icons.favorite
-                                          : Icons.favorite_border,
-                                      color: Constants.primaryColor,
-                                    ),
-                                    iconSize: 30,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(50),
-                                  ),
-                                ),
-                              ),
-                              Positioned(
                                 left: 50,
                                 right: 50,
                                 top: 50,
                                 bottom: 50,
-                                child: Image.asset(_eventList[index].imageURL),
+                                child: Image.asset(_sellerList[index].imageURL),
                               ),
                               Positioned(
                                 bottom: 15,
@@ -175,14 +196,14 @@ class _HomePageState extends State<HomePage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      _eventList[index].category,
+                                      _sellerList[index].decription,
                                       style: const TextStyle(
                                         color: Colors.white70,
                                         fontSize: 16,
                                       ),
                                     ),
                                     Text(
-                                      _eventList[index].eventName,
+                                      _sellerList[index].sellerName,
                                       style: const TextStyle(
                                         color: Colors.white70,
                                         fontSize: 15,
@@ -239,10 +260,16 @@ class _HomePageState extends State<HomePage> {
                     physics: const BouncingScrollPhysics(),
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
-                          onTap: (){
-                            Navigator.push(context, PageTransition(child: DetailPage(EventId: _eventList[index].eventId), type: PageTransitionType.bottomToTop));
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    child: DetailPage(
+                                        EventId: _eventList[index].eventId),
+                                    type: PageTransitionType.bottomToTop));
                           },
-                          child: EventWidget(index: index, eventList: _eventList));
+                          child:
+                              EventWidget(index: index, eventList: _eventList));
                     }),
               ),
             ],
