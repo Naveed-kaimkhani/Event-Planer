@@ -43,7 +43,12 @@ static Future  uploadDataToFirestore({required firstname,required lastname,requi
     required String SellerUid,
     required String Category,
   }) async {
-    
+    print(title);
+    print(description);
+    print(charges);
+    print(SellerName);//null
+    print(SellerUid);
+    print(Category);
     //rawCost.trim();
     String output = "Something went wrong";
 
@@ -58,6 +63,9 @@ static Future  uploadDataToFirestore({required firstname,required lastname,requi
     ) {
       try {
         String uid = Utils().getUid();
+        String uid1 = Utils().getUid();
+        String uid2 = Utils().getUid();
+        String uid3 = Utils().getUid();
         String url1 = await uploadImageToDatabase(image: image1, uid: uid);
          String url2 = await uploadImageToDatabase(image: image2, uid: uid);
           String url3 = await uploadImageToDatabase(image: image3, uid: uid);
@@ -68,7 +76,7 @@ static Future  uploadDataToFirestore({required firstname,required lastname,requi
             url1: url1,
              url2: url2, 
              url3: url3,
-              url4: url4,
+              url4: url4, 
                charges: charges, 
                rating: 5, 
                SellerName: SellerName,
@@ -81,6 +89,7 @@ static Future  uploadDataToFirestore({required firstname,required lastname,requi
             .doc(uid)
             .set(event.getJson());
             print("event uploaded to firestore");
+           //  print("Upload event to db done");
         output = "success";
       } catch (e) {
         output = e.toString();

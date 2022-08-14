@@ -41,18 +41,18 @@ class SignUp extends StatelessWidget {
                 height: 30,
               ),
               inputfields(
-                  hint_text: "Enter FirstName", controller: FirstController),
+                  hint_text: "Enter FirstName", controller: FirstController,field_icon: Icons.abc,),
               k,
               inputfields(
-                  hint_text: "Enter LastName", controller: LastController),
+                  hint_text: "Enter LastName", controller: LastController,field_icon: Icons.abc,),
               k,
-              inputfields(hint_text: "Enter Email", controller: eController),
+              inputfields(hint_text: "Enter Email", controller: eController,field_icon: Icons.mail_outline,),
               k,
-              inputfields(hint_text: "Enter Phone", controller:PhoneController),
+              inputfields(hint_text: "Enter Phone", controller:PhoneController,field_icon: Icons.phone,),
 
               k,
               inputfields(
-                  hint_text: "Enter Password", controller: PassController),
+                  hint_text: "Enter Password", controller: PassController,field_icon: Icons.password),
               k,
               GestureDetector(
                 onTap: ()async {
