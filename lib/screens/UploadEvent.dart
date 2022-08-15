@@ -4,7 +4,10 @@ import 'package:eventplaner/constant/inputfields.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 
+import '../Provider/UserDetailsProvider.dart';
 import '../constant/Utils.dart';
 import '../services/Firestore_method.dart';
 
@@ -38,6 +41,13 @@ class _UploadEventState extends State<UploadEvent> {
   Uint8List? image2;
   Uint8List? image3;
   Uint8List? image4;
+  bool isLoading = false;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print(FirebaseAuth.instance.currentUser!.uid);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,13 +73,22 @@ class _UploadEventState extends State<UploadEvent> {
                   fontWeight: FontWeight.bold,
                 )),
             k,
-            inputfields(hint_text: "Enter Title", controller: titleController),
+            inputfields(
+              hint_text: "Enter Title",
+              controller: titleController,
+              field_icon: Icons.title,
+            ),
             k,
             inputfields(
-                hint_text: "Enter Description", controller: descripontroller),
+              hint_text: "Enter Description",
+              controller: descripontroller,
+              field_icon: Icons.description_outlined,
+            ),
             k,
             inputfields(
-                hint_text: "Enter Charges", controller: chargesController),
+                hint_text: "Enter Charges",
+                controller: chargesController,
+                field_icon: Icons.price_check),
             k,
             Container(
                 padding: EdgeInsets.symmetric(
@@ -104,11 +123,11 @@ class _UploadEventState extends State<UploadEvent> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                UploadImage(image1),
+                UploadImage1(image1),
 
-                UploadImage(image2),
-                UploadImage(image3),
-                UploadImage(image3),
+                UploadImage2(image2),
+                UploadImage3(image3),
+                UploadImage4(image4),
                 // image1 == null
                 //     ? Padding(
                 //         padding: const EdgeInsets.only(top: 18.0),
@@ -164,29 +183,51 @@ class _UploadEventState extends State<UploadEvent> {
                   color: Colors.purple,
                 ),
                 child: GestureDetector(
-                  child: const Center(
-                      child: Text(
-                    "Upload Event",
-                    style: TextStyle(color: Colors.white),
-                  )),
+                  child: Center(
+                      child: isLoading
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  "Please Wait..",
+                                  style: TextStyle(color: Colors.white),
+                                )
+                              ],
+                            )
+                          : Text(
+                              "Post Event",
+                              style: TextStyle(color: Colors.white),
+                            )),
                   onTap: () async {
-                    print("in upload function");
-                    Future<String> url1 =
-                        Firestore_method.uploadImageToDatabase(
-                            image: image1, uid: Utils().getUid());
+                    //  print("in upload function");
+                    // Future<String> url1 =
+                    //     Firestore_method.uploadImageToDatabase(
+                    //         image: image1, uid: Utils().getUid());
 
-                    Future<String> url2 =
-                        Firestore_method.uploadImageToDatabase(
-                            image: image2, uid: Utils().getUid());
+                    // Future<String> url2 =
+                    //     Firestore_method.uploadImageToDatabase(
+                    //         image: image2, uid: Utils().getUid());
 
-                    Future<String> url3 =
-                        Firestore_method.uploadImageToDatabase(
-                            image: image3, uid: Utils().getUid());
+                    // Future<String> url3 =
+                    //     Firestore_method.uploadImageToDatabase(
+                    //         image: image3, uid: Utils().getUid());
 
-                    Future<String> url4 =
-                        Firestore_method.uploadImageToDatabase(
-                            image: image4, uid: Utils().getUid());
+                    // Future<String> url4 =
+                    //     Firestore_method.uploadImageToDatabase(
+                    //         image: image4, uid: Utils().getUid());
+
+                    // if (isLoading)return;
+                    setState(() {
+                      isLoading = true;
+                    });
                     String output = await Firestore_method.uploadEventToDb(
+
                       image1: image1,
                       image2: image2,
                       image3: image3,
@@ -194,18 +235,40 @@ class _UploadEventState extends State<UploadEvent> {
                       title: titleController.text,
                       description: descripontroller.text,
                       charges: double.parse(chargesController.text),
-                      Category: categController.text,
-                      SellerName: "blahhh",
+                      Category: SelectedCateg,
+                      SellerName: Provider.of<UserDetailsProvider>(context,
+                                  listen: false)
+                              .userDetails!
+                              .firstName ??
+                          "No name",
                       SellerUid: FirebaseAuth.instance.currentUser!.uid,
                     );
-
-                    print("prodcut uploaded");
+                    setState(() {
+                      isLoading = false;
+                    });
+                    //     print("event uploaded");
                     if (output == "success") {
-                      Utils.showSnackBar(
-                          context: context, content: "Product Uploaded");
-                      print("Showing snackbar");
+                      Fluttertoast.showToast(
+                          timeInSecForIosWeb: 2,
+                          msg: "Event Posted",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity
+                              .BOTTOM, // also possible "TOP" and "CENTER"
+                          backgroundColor: Colors.blueGrey[700],
+                          textColor: Colors.white);
+                      //print("Showing snackbar");
                     } else {
-                      Utils.showSnackBar(context: context, content: output);
+                      print(output);
+                      Fluttertoast.showToast(
+                          timeInSecForIosWeb: 2,
+                          msg: output,
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity
+                              .BOTTOM, // also possible "TOP" and "CENTER"
+                          backgroundColor: Colors.blueGrey[700],
+                          textColor: Colors.white);
+
+                      // Utils.showSnackBar(context: context, content: output);
                       print("Exception aai");
                     }
                   },
@@ -216,7 +279,7 @@ class _UploadEventState extends State<UploadEvent> {
     ));
   }
 
-  Widget UploadImage(Uint8List? image) {
+  Widget UploadImage1(Uint8List? image) {
     return image == null
         ? Padding(
             padding: const EdgeInsets.only(top: 18.0),
@@ -260,5 +323,149 @@ class _UploadEventState extends State<UploadEvent> {
                   icon: Icon(Icons.upload)),
             ],
           );
-  }
+  } // for 1st image
+
+  //
+  Widget UploadImage2(Uint8List? image) {
+    return image == null
+        ? Padding(
+            padding: const EdgeInsets.only(top: 18.0),
+            child: Stack(
+              children: [
+                Image.network(
+                  "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
+                  height: 60,
+                ),
+                IconButton(
+                    onPressed: () async {
+                      Uint8List? _image = await Utils().PickImage();
+                      if (_image != null) {
+                        setState(() {
+                          image2 = _image;
+                        });
+                      } else {
+                        print("Image not loaded");
+                      }
+                    },
+                    icon: Icon(Icons.upload)),
+              ],
+            ),
+          )
+        : Stack(
+            children: [
+              Image.memory(
+                image2!,
+                height: MediaQuery.of(context).size.height / 15,
+              ),
+              IconButton(
+                  onPressed: () async {
+                    Uint8List? _image = await Utils().PickImage();
+                    if (_image != null) {
+                      setState(() {
+                        image2 = _image;
+                      });
+                    }
+                    print("Image not loaded");
+                  },
+                  icon: Icon(Icons.upload)),
+            ],
+          );
+  } // for 2nd image
+
+  Widget UploadImage3(Uint8List? image) {
+    return image == null
+        ? Padding(
+            padding: const EdgeInsets.only(top: 18.0),
+            child: Stack(
+              children: [
+                Image.network(
+                  "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
+                  height: 60,
+                ),
+                IconButton(
+                    onPressed: () async {
+                      Uint8List? _image = await Utils().PickImage();
+                      if (_image != null) {
+                        setState(() {
+                          image3 = _image;
+                        });
+                      } else {
+                        print("Image not loaded");
+                      }
+                    },
+                    icon: Icon(Icons.upload)),
+              ],
+            ),
+          )
+        : Stack(
+            children: [
+              Image.memory(
+                image3!,
+                height: MediaQuery.of(context).size.height / 15,
+              ),
+              IconButton(
+                  onPressed: () async {
+                    Uint8List? _image = await Utils().PickImage();
+                    if (_image != null) {
+                      setState(() {
+                        image3 = _image;
+                      });
+                    }
+                    print("Image not loaded");
+                  },
+                  icon: Icon(Icons.upload)),
+            ],
+          );
+  } // for 3rd image
+
+  Widget UploadImage4(Uint8List? image) {
+    return image == null
+        ? Padding(
+            padding: const EdgeInsets.only(top: 18.0),
+            child: Stack(
+              children: [
+                Image.network(
+                  "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
+                  height: 60,
+                ),
+                IconButton(
+                    onPressed: () async {
+                      Uint8List? _image = await Utils().PickImage();
+                      if (_image != null) {
+                        setState(() {
+                          image4 = _image;
+                        });
+                      } else {
+                        print("Image not loaded");
+                      }
+                    },
+                    icon: Icon(Icons.upload)),
+              ],
+            ),
+          )
+        : Stack(
+            children: [
+              Image.memory(
+                image4!,
+                height: MediaQuery.of(context).size.height / 15,
+              ),
+              IconButton(
+                  onPressed: () async {
+                    Uint8List? _image = await Utils().PickImage();
+                    if (_image != null) {
+                      setState(() {
+                        image4 = _image;
+                      });
+                    }
+                    print("Image not loaded");
+                  },
+                  icon: Icon(Icons.upload)),
+            ],
+          );
+  } // for 4th image
+
 }
+
+////////
+///
+///

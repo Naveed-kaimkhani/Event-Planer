@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:math';
 import 'dart:typed_data';
 
@@ -20,7 +21,12 @@ String getUid() {
   //    ImagePicker picker=ImagePicker();
   ImagePicker picker =ImagePicker();
       XFile? file= await picker.pickImage(source: ImageSource.gallery);
-      return file!.readAsBytes();
+      
+      //  return Image!.network("https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png");
+     
+              return file!.readAsBytes();
+
+      
     }
 
   static showSnackBar(

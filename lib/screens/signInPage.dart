@@ -39,11 +39,19 @@ class SignIn extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              inputfields(hint_text: "Enter Email", controller: eController),
+              inputfields(
+                hint_text: "Enter Email",
+                controller: eController,
+                field_icon: Icons.email_outlined,
+              ),
               const SizedBox(
                 height: 10,
               ),
-              inputfields(hint_text: "Enter Password", controller: pController),
+              inputfields(
+                hint_text: "Enter Password",
+                controller: pController,
+                field_icon: Icons.password_outlined,
+              ),
               const SizedBox(
                 height: 10,
               ),
@@ -72,12 +80,22 @@ class SignIn extends StatelessWidget {
                         email: eController.text,
                         password: pController.text,
                       );
+<<<<<<< HEAD
                       //    if (output=="SignIn Successfully") {
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (_) => HomePage()));
                       // } else {
                       //   Utils.showSnackBar(context: context, content: output.toString());
                       // }
+=======
+                      if (output == "SignIn Successfully") {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (_) => HomePage()));
+                      } else {
+                        Utils.showSnackBar(
+                            context: context, content: output.toString());
+                      }
+>>>>>>> 5cfc07c5f9f12bf6fbd009bdec0d4d5202a78dca
                       // print(output);
                       //  Utils.showSnackBar(context: context, content: output.toString());
                     },
