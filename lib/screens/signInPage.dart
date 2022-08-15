@@ -80,6 +80,14 @@ class SignIn extends StatelessWidget {
                         email: eController.text,
                         password: pController.text,
                       );
+
+                      //    if (output=="SignIn Successfully") {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (_) => HomePage()));
+                      // } else {
+                      //   Utils.showSnackBar(context: context, content: output.toString());
+                      // }
+
                       if (output == "SignIn Successfully") {
                         Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: (_) => HomePage()));
@@ -87,6 +95,7 @@ class SignIn extends StatelessWidget {
                         Utils.showSnackBar(
                             context: context, content: output.toString());
                       }
+
                       // print(output);
                       //  Utils.showSnackBar(context: context, content: output.toString());
                     },

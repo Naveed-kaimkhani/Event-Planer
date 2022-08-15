@@ -27,7 +27,7 @@ class authentication_methods {
         );
         output = "SignUp Successfully";
         await Firestore_method.uploadDataToFirestore(
-            firstname: firstname,lastname: lastname, phone: phone);
+            firstname: firstname,lastname: lastname, phone: phone, address: "");
       } on FirebaseAuthException catch (e) {
         output = e.message.toString();
       }
