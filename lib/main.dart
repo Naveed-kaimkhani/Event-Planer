@@ -2,8 +2,6 @@ import 'package:eventplaner/screens/UploadEvent.dart';
 import 'package:eventplaner/screens/signupPage.dart';
 import 'package:eventplaner/services/authentication_methods.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:eventplaner/screens/homePage.dart';
-import 'package:eventplaner/screens/welcomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +28,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
     //      home: SignUpPage(),
     
-        home: welcomePage(),
+        home:SignUp(),
       ),
     );
   }

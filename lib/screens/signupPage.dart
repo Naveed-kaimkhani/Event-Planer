@@ -1,20 +1,37 @@
+import 'dart:typed_data';
+
 import 'package:eventplaner/constant/inputfields.dart';
 import 'package:eventplaner/screens/signInPage.dart';
+import 'package:eventplaner/services/Firestore_method.dart';
 import 'package:eventplaner/services/authentication_methods.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:page_transition/page_transition.dart';
 import '../constant/TextField.dart';
 import '../constant/Utils.dart';
 import '../constant/constants.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp extends StatefulWidget {
   SignUp({Key? key}) : super(key: key);
+
+  @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
   TextEditingController eController = TextEditingController();
+
   TextEditingController LastController = TextEditingController();
 
   TextEditingController FirstController = TextEditingController();
+
   TextEditingController PassController = TextEditingController();
+
   TextEditingController PhoneController = TextEditingController();
+
+  Uint8List? image;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -29,7 +46,7 @@ class SignUp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset('assets/undraw_Mobile_login_re_9ntv.png'),
+              // Image.asset('assets/undraw_Mobile_login_re_9ntv.png'),
               Center(
                 child: const Text(
                   'Sign Up',
@@ -43,23 +60,99 @@ class SignUp extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
+              //  Align(alignment: Alignment.center, child: UploadImage1(image)),
+              image == null
+                  ? Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 18.0),
+                        child: Stack(
+                          children: [
+                            Image.network(
+                              "https://cdn-icons-png.flaticon.com/512/8207/8207765.png",
+                              height: 50,
+                            ),
+                            IconButton(
+                                onPressed: () async {
+                                  Uint8List? _image = await Utils().PickImage();
+                                  if (_image != null) {
+                                    setState(() {
+                                      image = _image;
+                                    });
+                                  } else {
+                                    print("Image not loaded");
+                                  }
+                                },
+                                icon: Icon(Icons.upload)),
+                          ],
+                        ),
+                      ),
+                    )
+                  : Center(
+                      child: Stack(
+                        children: [
+                          Image.memory(
+                            image!,
+                            height: MediaQuery.of(context).size.height / 8,
+                          ),
+                          IconButton(
+                              onPressed: () async {
+                                Uint8List? _image = await Utils().PickImage();
+                                if (_image != null) {
+                                  setState(() {
+                                    image = _image;
+                                  });
+                                }
+                                print("Image not loaded");
+                              },
+                              icon: Icon(
+                                Icons.upload,
+                                size: 30,
+                              )),
+                        ],
+                      ),
+                    ),
+
+              k,
               inputfields(
-                  hint_text: "Enter FirstName", controller: FirstController,field_icon: Icons.abc,),
-              
+                hint_text: "Enter FirstName",
+                controller: FirstController,
+                field_icon: Icons.abc,
+              ),
+              k,
               inputfields(
-                  hint_text: "Enter LastName", controller: LastController,field_icon: Icons.abc,),
-              
-              inputfields(hint_text: "Enter Email", controller: eController,field_icon: Icons.mail_outline,),
+                hint_text: "Enter LastName",
+                controller: LastController,
+                field_icon: Icons.abc,
+              ),
+              k,
+              inputfields(
+                hint_text: "Enter Email",
+                controller: eController,
+                field_icon: Icons.mail_outline,
+              ),
               //  inputfields(
               //     hint_text: "Enter Phone", controller: PhoneController),
               // inputfields(hint_text: "Enter Phone", controller:PhoneController,field_icon: Icons.phone,),
 
-              
+              k,
               inputfields(
-                  hint_text: "Enter Password", controller: PassController,field_icon: Icons.password),
+                  hint_text: "Enter Phone",
+                  controller: PhoneController,
+                  field_icon: Icons.password),
+              k,
+              inputfields(
+                  hint_text: "Enter Password",
+                  controller: PassController,
+                  field_icon: Icons.password),
               k,
               GestureDetector(
                 onTap: () async {
+                  print(image == null);
+                  print(FirstController.text);
+                  print(LastController.text);
+                  print(eController.text);
+                  print(PassController.text);
+
                   String output = await authentication_methods.SignupUsers(
                     firstname: FirstController.text,
                     lastname: LastController.text,
@@ -68,11 +161,16 @@ class SignUp extends StatelessWidget {
                     password: PassController.text,
                   );
                   if (output == "SignUp Successfully") {
+                    Fluttertoast.showToast(msg: "SignUp Succesfully");
+                    print("user created");
+                    print(FirebaseAuth.instance.currentUser!.uid);
+                   await Firestore_method.uploadProfilePicToDatabase(
+                        image: image,
+                        uid: FirebaseAuth.instance.currentUser!.uid);
                     Navigator.pushReplacement(
                         context, MaterialPageRoute(builder: (_) => SignIn()));
                   } else {
-                    Utils.showSnackBar(
-                        context: context, content: output.toString());
+                    Fluttertoast.showToast(msg: output.toString());
                   }
                 },
                 child: Container(
@@ -97,6 +195,7 @@ class SignUp extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
+
               Row(
                 children: const [
                   Expanded(child: Divider()),
@@ -170,4 +269,56 @@ class SignUp extends StatelessWidget {
       ),
     );
   }
+
+  // Widget UploadImage1(Uint8List? image) {
+  //   return image == null
+  //       ? Padding(
+  //           padding: const EdgeInsets.only(top: 18.0),
+  //           child: Stack(
+  //             children: [
+  //               // Icon(
+  //               //   Icons.image,
+  //               //   size: 40,
+  //               // ),
+  //               Image.network(
+  //                 "https://cdn-icons-png.flaticon.com/512/8207/8207765.png",
+  //                 height: 80,
+  //               ),
+  //               IconButton(
+  //                 onPressed: () async {
+  //                   Uint8List? _image = await Utils().PickImage();
+  //                   if (_image != null) {
+  //                     setState(() {
+  //                       image = _image;
+  //                     });
+  //                   } else {
+  //                     print("Image not loaded");
+  //                   }
+  //                 },
+  //                 icon: Icon(Icons.upload, color: Colors.black),
+  //                 iconSize: 30,
+  //               ),
+  //             ],
+  //           ),
+  //         )
+  //       : Stack(
+  //           children: [
+  //             Image.memory(
+  //               image,
+  //               height: MediaQuery.of(context).size.height / 15,
+  //             ),
+  //             IconButton(
+  //                 onPressed: () async {
+  //                   Uint8List? _image = await Utils().PickImage();
+  //                   if (_image != null) {
+  //                     setState(() {
+  //                       image = _image;
+  //                     });
+  //                   }
+  //                   print("Image not loaded");
+  //                 },
+  //                 icon: Icon(Icons.upload)),
+  //           ],
+  //         );
+  // }
 }

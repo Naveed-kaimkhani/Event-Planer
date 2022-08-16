@@ -18,6 +18,12 @@ class authentication_methods {
     phone.trim();
     password.trim();
     String output;
+    print("in signup");
+    print(firstname);
+    print(lastname);
+    print(email);
+    print(phone);
+    print(password);
     if (firstname != "" && lastname != "" && email != "" && phone != "" && password != "") {
       try {
         final authResult =

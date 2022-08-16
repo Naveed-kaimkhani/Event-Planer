@@ -111,6 +111,16 @@ static Future  uploadDataToFirestore({required firstname,required lastname,requi
     return task.ref.getDownloadURL();
 
   }
+  static  Future<String> uploadProfilePicToDatabase(
+      {required Uint8List? image, required String uid}) async {
+    Reference storageRef =
+        FirebaseStorage.instance.ref().child("usersProfile").child(uid);
+    UploadTask uploadToask = storageRef.putData(image!);
+    TaskSnapshot task = await uploadToask;
+    print("image uploaded");
+    return task.ref.getDownloadURL();
+
+  }
 
 //  static Future<List<Widget>> getDataFromCategory({required String Category})async{
 //    List<Widget> Children=[];
