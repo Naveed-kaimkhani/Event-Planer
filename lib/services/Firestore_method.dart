@@ -123,6 +123,21 @@ static Future  uploadDataToFirestore({required firstname,required lastname,requi
 
   }
 
+ static Future<List<eventModel>> getDataFromDb()async{
+   List<eventModel> Children=[];
+   QuerySnapshot<Map<String,dynamic>> snap= await FirebaseFirestore.instance.collection("events").get();
+    print(snap.docs.length);
+    for (var i = 0; i < snap.docs.length;i++) {
+
+    DocumentSnapshot docsSnap=  snap.docs[i];
+
+    eventModel model=eventModel.fromJson(docsSnap.data() as dynamic);
+    //print(model.Category);
+  Children.add(model);
+    }
+    return Children;
+  }
+
  static Future<List<Widget>> getDataFromCategory({required String Category})async{
    List<Widget> Children=[];
    QuerySnapshot<Map<String,dynamic>> snap= await FirebaseFirestore.instance.collection("events").where("Category",isEqualTo: Category).get();
