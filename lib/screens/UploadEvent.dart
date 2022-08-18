@@ -254,7 +254,7 @@ class _UploadEventState extends State<UploadEvent> {
                           toastLength: Toast.LENGTH_SHORT,
                           gravity: ToastGravity
                               .BOTTOM, // also possible "TOP" and "CENTER"
-                          backgroundColor: Colors.blueGrey[700],
+                          backgroundColor: Colors.black,
                           textColor: Colors.white);
                       //print("Showing snackbar");
                     } else {

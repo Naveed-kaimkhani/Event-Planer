@@ -1,12 +1,24 @@
+<<<<<<< HEAD
 import 'package:eventplaner/Model/eventModelV2.dart';
 import 'package:eventplaner/screens/detailsPage.dart';
+=======
+import 'package:eventplaner/Model/eventModel.dart';
+import 'package:eventplaner/Model/sellermodel.dart';
+import 'package:eventplaner/screens/eventtype.dart';
+>>>>>>> a7d9cd10243bbcf03bda1d156a899246e2b7a931
 import 'package:flutter/material.dart';
 
 import 'package:page_transition/page_transition.dart';
 
 import '../Model/demoStuff/demoimages.dart';
 import '../constant/constants.dart';
+<<<<<<< HEAD
 import '../widgets/customizedappBar.dart';
+=======
+import '../services/Firestore_method.dart';
+import '../widgets/widgets.dart';
+import 'detailsPage.dart';
+>>>>>>> a7d9cd10243bbcf03bda1d156a899246e2b7a931
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,6 +28,25 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<eventModel>? AllEvents;
+
+  void getData() async {
+    List<eventModel> events =
+        await Firestore_method.getDataFromDb();
+    
+    setState(() {
+      AllEvents=events;
+    });
+  }
+ @override
+  void initState() {
+    getData();
+    //Firestore_method().getNameAndAddress();
+    super.initState();
+   
+
+  }
+
   @override
   Widget build(BuildContext context) {
     int selectedIndex = 0;

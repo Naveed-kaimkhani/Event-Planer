@@ -6,6 +6,7 @@ import 'package:eventplaner/Model/User_Details.dart';
 import 'package:eventplaner/Model/eventModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 
 import '../constant/Utils.dart';
 
@@ -122,18 +123,33 @@ static Future  uploadDataToFirestore({required firstname,required lastname,requi
 
   }
 
-//  static Future<List<Widget>> getDataFromCategory({required String Category})async{
-//    List<Widget> Children=[];
-//    QuerySnapshot<Map<String,dynamic>> snap= await FirebaseFirestore.instance.collection("products").where("Category",isEqualTo: Category).get();
+ static Future<List<eventModel>> getDataFromDb()async{
+   List<eventModel> Children=[];
+   QuerySnapshot<Map<String,dynamic>> snap= await FirebaseFirestore.instance.collection("events").get();
+    print(snap.docs.length);
+    for (var i = 0; i < snap.docs.length;i++) {
 
-//     for (var i = 0; i < snap.docs.length;i++) {
-//     DocumentSnapshot docsSnap=  snap.docs[i];
+    DocumentSnapshot docsSnap=  snap.docs[i];
 
-//     Product model=Product.fromJson(docsSnap.data() as dynamic);
-//   Children.add(ProductItem(product: model));
-//     }
-//     return Children;
-//   }
+    eventModel model=eventModel.fromJson(docsSnap.data() as dynamic);
+    //print(model.Category);
+  Children.add(model);
+    }
+    return Children;
+  }
+
+ static Future<List<Widget>> getDataFromCategory({required String Category})async{
+   List<Widget> Children=[];
+   QuerySnapshot<Map<String,dynamic>> snap= await FirebaseFirestore.instance.collection("events").where("Category",isEqualTo: Category).get();
+
+    for (var i = 0; i < snap.docs.length;i++) {
+    DocumentSnapshot docsSnap=  snap.docs[i];
+
+    eventModel model=eventModel.fromJson(docsSnap.data() as dynamic);
+  // Children.add(ProductItem(product: model));
+    }
+    return Children;
+  }
 
 //   Future<void> UploadReview({required ReviewModel review,required String uid}) async{
 

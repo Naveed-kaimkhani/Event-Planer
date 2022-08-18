@@ -7,6 +7,7 @@ import 'package:eventplaner/services/authentication_methods.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:page_transition/page_transition.dart';
 import '../constant/TextField.dart';
 import '../constant/Utils.dart';
@@ -31,6 +32,9 @@ class _SignUpState extends State<SignUp> {
   TextEditingController PhoneController = TextEditingController();
 
   Uint8List? image;
+  final GoogleSignIn _googleSignIn=GoogleSignIn(
+    scopes: ['email']
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -147,11 +151,7 @@ class _SignUpState extends State<SignUp> {
               k,
               GestureDetector(
                 onTap: () async {
-                  print(image == null);
-                  print(FirstController.text);
-                  print(LastController.text);
-                  print(eController.text);
-                  print(PassController.text);
+                  
 
                   String output = await authentication_methods.SignupUsers(
                     firstname: FirstController.text,
@@ -162,7 +162,7 @@ class _SignUpState extends State<SignUp> {
                   );
                   if (output == "SignUp Successfully") {
                     Fluttertoast.showToast(msg: "SignUp Succesfully");
-                    print("user created");
+                  //  print("user created");
                     print(FirebaseAuth.instance.currentUser!.uid);
                    await Firestore_method.uploadProfilePicToDatabase(
                         image: image,
@@ -225,11 +225,14 @@ class _SignUpState extends State<SignUp> {
                       height: 30,
                       child: Image.asset('assets/google.png'),
                     ),
-                    Text(
-                      'Sign Up with Google',
-                      style: TextStyle(
-                        color: Constants.blackColor,
-                        fontSize: 18.0,
+                    GestureDetector(
+                      onTap: ()=>authentication_methods.signInWithGoogle(),
+                      child: Text(
+                        'Sign Up with Google',
+                        style: TextStyle(
+                          color: Constants.blackColor,
+                          fontSize: 18.0,
+                        ),
                       ),
                     ),
                   ],
