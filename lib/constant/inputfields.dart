@@ -1,3 +1,4 @@
+import 'package:eventplaner/constant/constants.dart';
 import 'package:flutter/material.dart';
 
 class inputfields extends StatelessWidget {
@@ -14,13 +15,13 @@ class inputfields extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: 10,
+        horizontal: 20,
       ),
       width: width * 0.8,
 
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        color: Colors.purple[200],
+        borderRadius: BorderRadius.circular(50),
+        color: Color(0x26741b47),
       ),
 
       // ignore: prefer_const_constructors

@@ -32,9 +32,7 @@ class _SignUpState extends State<SignUp> {
   TextEditingController PhoneController = TextEditingController();
 
   Uint8List? image;
-  final GoogleSignIn _googleSignIn=GoogleSignIn(
-    scopes: ['email']
-  );
+  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
 
   @override
   Widget build(BuildContext context) {
@@ -44,26 +42,26 @@ class _SignUpState extends State<SignUp> {
     );
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 40),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            //crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Image.asset('assets/undraw_Mobile_login_re_9ntv.png'),
               Center(
                 child: const Text(
                   'Sign Up',
                   style: TextStyle(
-                    color: Color(0xffBEB6F5),
+                    color: Color(0xff741b47),
                     fontSize: 35.0,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              // const SizedBox(
+              //   height: 30,
+              // ),
               //  Align(alignment: Alignment.center, child: UploadImage1(image)),
               image == null
                   ? Center(
@@ -151,8 +149,6 @@ class _SignUpState extends State<SignUp> {
               k,
               GestureDetector(
                 onTap: () async {
-                  
-
                   String output = await authentication_methods.SignupUsers(
                     firstname: FirstController.text,
                     lastname: LastController.text,
@@ -162,9 +158,9 @@ class _SignUpState extends State<SignUp> {
                   );
                   if (output == "SignUp Successfully") {
                     Fluttertoast.showToast(msg: "SignUp Succesfully");
-                  //  print("user created");
+                    //  print("user created");
                     print(FirebaseAuth.instance.currentUser!.uid);
-                   await Firestore_method.uploadProfilePicToDatabase(
+                    await Firestore_method.uploadProfilePicToDatabase(
                         image: image,
                         uid: FirebaseAuth.instance.currentUser!.uid);
                     Navigator.pushReplacement(
@@ -209,7 +205,7 @@ class _SignUpState extends State<SignUp> {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Container(
                 width: size.width,
@@ -222,11 +218,11 @@ class _SignUpState extends State<SignUp> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     SizedBox(
-                      height: 30,
+                      height: 20,
                       child: Image.asset('assets/google.png'),
                     ),
                     GestureDetector(
-                      onTap: ()=>authentication_methods.signInWithGoogle(),
+                      onTap: () => authentication_methods.signInWithGoogle(),
                       child: Text(
                         'Sign Up with Google',
                         style: TextStyle(
@@ -239,7 +235,7 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               GestureDetector(
                 onTap: () {

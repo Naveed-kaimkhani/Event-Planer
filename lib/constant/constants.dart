@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Constants {
   //Primary color
-  static var primaryColor = Color(0xffBEB6F5);
+  static var primaryColor = Color(0xff741b47);
   static var blackColor = Colors.black54;
 
   //Onboarding texts

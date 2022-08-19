@@ -1,3 +1,4 @@
+import 'package:eventplaner/rootwidget.dart';
 import 'package:eventplaner/screens/UploadEvent.dart';
 import 'package:eventplaner/screens/homePage.dart';
 import 'package:eventplaner/screens/signupPage.dart';
@@ -22,14 +23,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-     ChangeNotifierProvider(create: (_)=>UserDetailsProvider()),
-
+        ChangeNotifierProvider(create: (_) => UserDetailsProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-    //      home: SignUpPage(),
-    
-        home:HomePage(),
+        //      home: SignUpPage(),
+
+        home: SignUp(),
       ),
     );
   }

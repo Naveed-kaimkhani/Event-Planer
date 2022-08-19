@@ -1,17 +1,15 @@
 import 'package:eventplaner/constant/constants.dart';
+import 'package:eventplaner/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 
-AppBar buildAppBar() {
+AppBar buildAppBar(String title) {
   return AppBar(
     backgroundColor: Constants.primaryColor,
-    leading: IconButton(
-      icon: (Icon(Icons.menu)),
-      onPressed: () {},
-    ),
+
     // On Android by default its false
     centerTitle: true,
     title: Text(
-      "Event PLanner",
+      title,
       style: TextStyle(color: Colors.white),
     ),
     actions: <Widget>[
