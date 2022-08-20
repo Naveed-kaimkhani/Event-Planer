@@ -1,6 +1,8 @@
 import 'package:eventplaner/screens/UploadEvent.dart';
 import 'package:eventplaner/screens/homePage.dart';
+import 'package:eventplaner/screens/signInPage.dart';
 import 'package:eventplaner/screens/signupPage.dart';
+import 'package:eventplaner/services/Firestore_method.dart';
 import 'package:eventplaner/services/authentication_methods.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -22,14 +24,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-     ChangeNotifierProvider(create: (_)=>UserDetailsProvider()),
-
+        ChangeNotifierProvider(create: (_) => UserDetailsProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-    //      home: SignUpPage(),
-    
-        home:HomePage(),
+        //      home: SignUpPage(),
+
+        home: SignIn(),
       ),
     );
   }

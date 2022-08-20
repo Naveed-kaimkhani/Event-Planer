@@ -30,11 +30,10 @@ class _SignUpState extends State<SignUp> {
   TextEditingController PassController = TextEditingController();
 
   TextEditingController PhoneController = TextEditingController();
+  bool isLoading = false;
 
   Uint8List? image;
-  final GoogleSignIn _googleSignIn=GoogleSignIn(
-    scopes: ['email']
-  );
+  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
 
   @override
   Widget build(BuildContext context) {
@@ -151,9 +150,11 @@ class _SignUpState extends State<SignUp> {
               k,
               GestureDetector(
                 onTap: () async {
-                  
-
+                  setState(() {
+                    isLoading = true;
+                  });
                   String output = await authentication_methods.SignupUsers(
+                    image: image,
                     firstname: FirstController.text,
                     lastname: LastController.text,
                     email: eController.text,
@@ -161,12 +162,16 @@ class _SignUpState extends State<SignUp> {
                     password: PassController.text,
                   );
                   if (output == "SignUp Successfully") {
+                    setState(() {
+                      isLoading = false;
+                    });
                     Fluttertoast.showToast(msg: "SignUp Succesfully");
-                  //  print("user created");
-                    print(FirebaseAuth.instance.currentUser!.uid);
-                   await Firestore_method.uploadProfilePicToDatabase(
-                        image: image,
-                        uid: FirebaseAuth.instance.currentUser!.uid);
+                    //  print("user created");
+                    // print(FirebaseAuth.instance.currentUser!.uid);
+                    // await Firestore_method.uploadProfilePicToDatabase(
+                    //     image: image,
+                    //     uid: FirebaseAuth.instance.currentUser!.uid);
+
                     Navigator.pushReplacement(
                         context, MaterialPageRoute(builder: (_) => SignIn()));
                   } else {
@@ -181,15 +186,27 @@ class _SignUpState extends State<SignUp> {
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                  child: const Center(
-                    child: Text(
-                      'Sign Up',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                      ),
-                    ),
-                  ),
+                  child: Center(
+                      child: isLoading
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  "Please Wait..",
+                                  style: TextStyle(color: Colors.white),
+                                )
+                              ],
+                            )
+                          : Text(
+                              "SignUp",
+                              style: TextStyle(color: Colors.white),
+                            )),
                 ),
               ),
               const SizedBox(
@@ -224,7 +241,7 @@ class _SignUpState extends State<SignUp> {
                       child: Image.asset('assets/google.png'),
                     ),
                     GestureDetector(
-                      onTap: ()=>authentication_methods.signInWithGoogle(),
+                      onTap: () => authentication_methods.signInWithGoogle(),
                       child: Text(
                         'Sign Up with Google',
                         style: TextStyle(

@@ -5,7 +5,7 @@ class eventModel {
   final String url1;
   final String url2;
   final String url3;
-  final String url4;
+ // final String url4;
   final double charges;
   final int rating;
   final String SellerName;
@@ -21,7 +21,7 @@ class eventModel {
       required this.url1,
       required this.url2,
       required this.url3,
-      required this.url4,
+    //  required this.url4,
       required this.charges,
       required this.rating,
       required this.SellerName,
@@ -36,7 +36,7 @@ class eventModel {
       'url1': url1,
       'url2': url2,
       'url3': url3,
-      'url4': url4,
+     // 'url4': url4,
       
       'charges':charges,
       'uid': uid,
@@ -57,7 +57,7 @@ class eventModel {
          url1: json['url1'],
          url2: json['url2'],
          url3: json['url3'],
-         url4: json['url4'],
+      //   url4: json['url4'],
           charges:json['charges'], 
            rating: json['rating'],
             SellerName:json['sellerName'], 

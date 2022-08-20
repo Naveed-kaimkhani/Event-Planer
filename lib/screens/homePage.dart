@@ -3,8 +3,11 @@ import 'package:eventplaner/Model/sellermodel.dart';
 import 'package:eventplaner/screens/eventtype.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
+import '../Model/User_Details.dart';
 import '../Model/eventModelV2.dart';
+import '../Provider/UserDetailsProvider.dart';
 import '../constant/constants.dart';
 import '../services/Firestore_method.dart';
 import '../widgets/widgets.dart';
@@ -23,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   void getData() async {
     List<eventModel> events =
         await Firestore_method.getDataFromDb();
-    
+   
     setState(() {
       AllEvents=events;
     });
@@ -31,14 +34,18 @@ class _HomePageState extends State<HomePage> {
  @override
   void initState() {
     getData();
-    //Firestore_method().getNameAndAddress();
+   // Firestore_method().getUserDetails();
     super.initState();
-   
-
   }
 
   @override
   Widget build(BuildContext context) {
+    User_Details? userdetails =
+
+     Provider.of<UserDetailsProvider>(context,listen: false).userDetails;
+     print("first name ${userdetails!.firstName}");
+     print( "last name ${userdetails.lastName}");
+
     int selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
 

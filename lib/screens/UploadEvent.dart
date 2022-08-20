@@ -40,7 +40,7 @@ class _UploadEventState extends State<UploadEvent> {
   Uint8List? image1;
   Uint8List? image2;
   Uint8List? image3;
-  Uint8List? image4;
+ 
   bool isLoading = false;
   @override
   void initState() {
@@ -127,7 +127,7 @@ class _UploadEventState extends State<UploadEvent> {
 
                 UploadImage2(image2),
                 UploadImage3(image3),
-                UploadImage4(image4),
+               
                 // image1 == null
                 //     ? Padding(
                 //         padding: const EdgeInsets.only(top: 18.0),
@@ -231,7 +231,7 @@ class _UploadEventState extends State<UploadEvent> {
                       image1: image1,
                       image2: image2,
                       image3: image3,
-                      image4: image4,
+                     
                       title: titleController.text,
                       description: descripontroller.text,
                       charges: double.parse(chargesController.text),
@@ -417,52 +417,6 @@ class _UploadEventState extends State<UploadEvent> {
             ],
           );
   } // for 3rd image
-
-  Widget UploadImage4(Uint8List? image) {
-    return image == null
-        ? Padding(
-            padding: const EdgeInsets.only(top: 18.0),
-            child: Stack(
-              children: [
-                Image.network(
-                  "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
-                  height: 60,
-                ),
-                IconButton(
-                    onPressed: () async {
-                      Uint8List? _image = await Utils().PickImage();
-                      if (_image != null) {
-                        setState(() {
-                          image4 = _image;
-                        });
-                      } else {
-                        print("Image not loaded");
-                      }
-                    },
-                    icon: Icon(Icons.upload)),
-              ],
-            ),
-          )
-        : Stack(
-            children: [
-              Image.memory(
-                image4!,
-                height: MediaQuery.of(context).size.height / 15,
-              ),
-              IconButton(
-                  onPressed: () async {
-                    Uint8List? _image = await Utils().PickImage();
-                    if (_image != null) {
-                      setState(() {
-                        image4 = _image;
-                      });
-                    }
-                    print("Image not loaded");
-                  },
-                  icon: Icon(Icons.upload)),
-            ],
-          );
-  } // for 4th image
 
 }
 
