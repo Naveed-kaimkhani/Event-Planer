@@ -14,7 +14,6 @@ import '../../constant/constants.dart';
 import '../../services/Firestore_method.dart';
 import '../../widgets/customizedappBar.dart';
 
-
 class WeddingPage extends StatefulWidget {
   final Function? setPageIndex;
   const WeddingPage(

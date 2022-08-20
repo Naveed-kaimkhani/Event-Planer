@@ -86,7 +86,11 @@ class _HomePageState extends State<HomePage> {
               ),
               ListTile(
                 leading: Icon(Icons.settings),
-                title: Text('Account Settings'),
+                title: Text('Upload Events'),
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('Seller Account'),
               ),
             ],
           ),
