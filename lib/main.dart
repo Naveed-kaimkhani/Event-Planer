@@ -1,3 +1,4 @@
+import 'package:eventplaner/rootwidget.dart';
 import 'package:eventplaner/screens/UploadEvent.dart';
 import 'package:eventplaner/screens/homePage.dart';
 import 'package:eventplaner/screens/signInPage.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         //      home: SignUpPage(),
 
         home: SignIn(),
+       // home: SignUp(),
       ),
     );
   }

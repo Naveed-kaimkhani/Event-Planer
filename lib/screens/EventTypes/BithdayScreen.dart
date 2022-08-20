@@ -4,45 +4,33 @@ import 'package:eventplaner/screens/detailsPage.dart';
 import 'package:eventplaner/Model/eventModel.dart';
 import 'package:eventplaner/Model/sellermodel.dart';
 import 'package:eventplaner/screens/eventtype.dart';
-import 'package:eventplaner/widgets/drawer.dart';
 
 import 'package:flutter/material.dart';
 
 import 'package:page_transition/page_transition.dart';
-import 'package:provider/provider.dart';
 
-import '../Model/User_Details.dart';
-import '../Model/eventModelV2.dart';
-import '../Provider/UserDetailsProvider.dart';
-import '../Model/demoStuff/demoimages.dart';
-import '../constant/constants.dart';
+import '../../Model/demoStuff/demoimages.dart';
+import '../../constant/constants.dart';
+import '../../services/Firestore_method.dart';
+import '../../widgets/customizedappBar.dart';
 
-import '../widgets/customizedappBar.dart';
 
-import '../services/Firestore_method.dart';
-import '../widgets/widgets.dart';
-import 'EventTypes/weddings.dart';
-import 'detailsPage.dart';
-
-class HomePage extends StatefulWidget {
+class BirthdayPage extends StatefulWidget {
   final Function? setPageIndex;
-  const HomePage(
+  const BirthdayPage(
     this.setPageIndex, {
     Key? key,
   }) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<BirthdayPage> createState() => _BirthdayPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _BirthdayPageState extends State<BirthdayPage> {
   List<eventModel>? AllEvents;
 
   void getData() async {
-    List<eventModel> events =
-        await Firestore_method.getDataFromDb();
-   
-    //List<eventModel> events = await Firestore_method.getDataFromDb();
+    List<eventModel> events = await Firestore_method.getDataFromDb();
 
     setState(() {
       AllEvents = events;
@@ -52,18 +40,12 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     getData();
-   // Firestore_method().getUserDetails();
+    //Firestore_method().getNameAndAddress();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    User_Details? userdetails =
-
-     Provider.of<UserDetailsProvider>(context,listen: false).userDetails;
-     print("first name ${userdetails!.firstName}");
-     print( "last name ${userdetails.lastName}");
-
     int selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
 
@@ -83,28 +65,7 @@ class _HomePageState extends State<HomePage> {
     }
 
     return Scaffold(
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              buildAppBar(""),
-              ListTile(
-                //menu item of Drawer
-                leading: Icon(Icons.home),
-                title: Text('Home Page'),
-              ),
-              ListTile(
-                leading: Icon(Icons.account_circle),
-                title: Text('My Profile'),
-              ),
-              ListTile(
-                leading: Icon(Icons.settings),
-                title: Text('Account Settings'),
-              ),
-            ],
-          ),
-        ),
-        appBar: buildAppBar("HomePage"),
+        appBar: buildAppBar("Birthday"),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -291,22 +252,9 @@ class _HomePageState extends State<HomePage> {
                         child: Stack(children: [
                           PageView.builder(
                             itemCount: demoallImages.length,
-                            itemBuilder: ((context, index) => GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        PageTransition(
-                                            child: DetailPage(
-                                              EventId:
-                                                  _eventList[index].eventId,
-                                            ),
-                                            type: PageTransitionType
-                                                .bottomToTop));
-                                  },
-                                  child: Image.asset(
-                                    demoallImages[index],
-                                    fit: BoxFit.cover,
-                                  ),
+                            itemBuilder: ((context, index) => Image.asset(
+                                  demoallImages[index],
+                                  fit: BoxFit.cover,
                                 )),
                           ),
                         ])),

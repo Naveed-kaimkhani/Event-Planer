@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../rootwidget.dart';
 import 'Firestore_method.dart';
 
 class authentication_methods {
@@ -15,7 +16,7 @@ class authentication_methods {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (BuildContext context, snapshot) {
           if (snapshot.hasData) {
-            return HomePage();
+            return rootPage();
           } else {
             return SignIn();
           }

@@ -43,26 +43,26 @@ class _SignUpState extends State<SignUp> {
     );
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 40),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            //crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Image.asset('assets/undraw_Mobile_login_re_9ntv.png'),
               Center(
                 child: const Text(
                   'Sign Up',
                   style: TextStyle(
-                    color: Color(0xffBEB6F5),
+                    color: Color(0xff741b47),
                     fontSize: 35.0,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              // const SizedBox(
+              //   height: 30,
+              // ),
               //  Align(alignment: Alignment.center, child: UploadImage1(image)),
               image == null
                   ? Center(
@@ -172,6 +172,9 @@ class _SignUpState extends State<SignUp> {
                     //     image: image,
                     //     uid: FirebaseAuth.instance.currentUser!.uid);
 
+                    await Firestore_method.uploadProfilePicToDatabase(
+                        image: image,
+                        uid: FirebaseAuth.instance.currentUser!.uid);
                     Navigator.pushReplacement(
                         context, MaterialPageRoute(builder: (_) => SignIn()));
                   } else {
@@ -207,6 +210,17 @@ class _SignUpState extends State<SignUp> {
                               "SignUp",
                               style: TextStyle(color: Colors.white),
                             )),
+                  child: const Center(
+                    child: InkWell(
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.0,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -224,7 +238,7 @@ class _SignUpState extends State<SignUp> {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Container(
                 width: size.width,
@@ -237,7 +251,7 @@ class _SignUpState extends State<SignUp> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     SizedBox(
-                      height: 30,
+                      height: 20,
                       child: Image.asset('assets/google.png'),
                     ),
                     GestureDetector(
@@ -254,7 +268,7 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               GestureDetector(
                 onTap: () {
