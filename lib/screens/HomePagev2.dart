@@ -1,66 +1,54 @@
-import 'package:eventplaner/Model/eventModelV2.dart';
-import 'package:eventplaner/screens/detailsPage.dart';
-
-import 'package:eventplaner/Model/eventModel.dart';
-import 'package:eventplaner/Model/sellermodel.dart';
-import 'package:eventplaner/screens/eventtype.dart';
-import 'package:eventplaner/widgets/drawer.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:page_transition/page_transition.dart';
-import 'package:provider/provider.dart';
 
-import '../Model/User_Details.dart';
-import '../Model/eventModelV2.dart';
-import '../Provider/UserDetailsProvider.dart';
 import '../Model/demoStuff/demoimages.dart';
+import '../Model/eventModelV2.dart';
+
 import '../constant/constants.dart';
 
 import '../widgets/customizedappBar.dart';
 
-import '../services/Firestore_method.dart';
-import '../widgets/widgets.dart';
-import 'EventTypes/weddings.dart';
 import 'detailsPage.dart';
 
-class HomePage extends StatefulWidget {
+class HomePagev2 extends StatefulWidget {
   final Function? setPageIndex;
-  const HomePage(
+  const HomePagev2(
     this.setPageIndex, {
     Key? key,
   }) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePagev2> createState() => _HomePagev2State();
 }
 
-class _HomePageState extends State<HomePage> {
-  List<eventModel>? AllEvents;
+class _HomePagev2State extends State<HomePagev2> {
+  //List<eventModel>? AllEvents;
 
-  void getData() async {
-    List<eventModel> events = await Firestore_method.getDataFromDb();
+  // void getData() async {
+  //   List<eventModel> events =
+  //       await Firestore_method.getDataFromDb();
 
-    //List<eventModel> events = await Firestore_method.getDataFromDb();
+  //   //List<eventModel> events = await Firestore_method.getDataFromDb();
 
-    setState(() {
-      AllEvents = events;
-    });
-  }
+  //   setState(() {
+  //     AllEvents = events;
+  //   });
+  // }
 
   @override
-  void initState() {
-    getData();
-    // Firestore_method().getUserDetails();
-    super.initState();
-  }
+  // void initState() {
+  //   getData();
+  //  // Firestore_method().getUserDetails();
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
-    User_Details? userdetails =
-        Provider.of<UserDetailsProvider>(context, listen: false).userDetails;
-    print("first name ${userdetails!.firstName}");
-    print("last name ${userdetails.lastName}");
+    //User_Details? userdetails =
+
+    //  Provider.of<UserDetailsProvider>(context,listen: false).userDetails;
+    //  print("first name ${userdetails!.firstName}");
+    //  print( "last name ${userdetails.lastName}");
 
     int selectedIndex = 0;
     Size size = MediaQuery.of(context).size;

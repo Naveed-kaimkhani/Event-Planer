@@ -6,7 +6,7 @@ import '../services/Firestore_method.dart';
 
 class UserDetailsProvider with ChangeNotifier{
   User_Details? userDetails;
-  UserDetailsProvider():userDetails=User_Details(firstName: "Loading",lastName: "Loading", phone: "Loading");
+  //UserDetailsProvider():userDetails=User_Details(firstName: "Loading",lastName: "Loading", phone: "Loading");
 
   Future getData() async {
     userDetails = await Firestore_method().getUserDetails();

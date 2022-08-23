@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:eventplaner/screens/homePage.dart';
 import 'package:eventplaner/screens/signInPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,7 +11,7 @@ import 'Firestore_method.dart';
 
 class authentication_methods {
 
-  handleAuthState() {
+ static handleAuthState() {
     return StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (BuildContext context, snapshot) {
@@ -38,11 +40,14 @@ class authentication_methods {
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
   static Future<String> SignupUsers(
+    
       {required String firstname,
+    
       required String lastname,
       required String email,
       required String password,
       required String phone,
+    required Uint8List? image,
      // required String address,
       
       }) async {
@@ -52,7 +57,7 @@ class authentication_methods {
     phone.trim();
     password.trim();
     String output;
-    if (firstname != "" && lastname != "" && email != "" && phone != "" && password != "") {
+    if (firstname != "" && lastname != "" && email != "" && phone != "" && password != ""&&image!=null) {
       try {
         final authResult =
             await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -61,7 +66,8 @@ class authentication_methods {
         );
         output = "SignUp Successfully";
         await Firestore_method.uploadDataToFirestore(
-            firstname: firstname,lastname: lastname, phone: phone, address: "");
+            firstname: firstname,lastname: lastname, phone: phone);
+        await    Firestore_method.uploadProfilePicToDatabase(image: image, uid:FirebaseAuth.instance.currentUser!.uid);
       } on FirebaseAuthException catch (e) {
         output = e.message.toString();
       }

@@ -1,7 +1,7 @@
-import 'package:eventplaner/Model/demoStuff/demoimages.dart';
 import 'package:eventplaner/screens/EventTypes/BithdayScreen.dart';
 import 'package:eventplaner/screens/EventTypes/CorporateEventsScreen.dart';
 import 'package:eventplaner/screens/EventTypes/weddings.dart';
+import 'package:eventplaner/screens/HomePagev2.dart';
 import 'package:eventplaner/screens/homePage.dart';
 import 'package:flutter/material.dart';
 
@@ -26,15 +26,14 @@ class _rootPageState extends State<rootPage> {
   @override
   Widget build(BuildContext context) {
     pages = [
-      HomePage(setPageIndex),
-      WeddingPage(setPageIndex),
-      BirthdayPage(setPageIndex),
+      HomePagev2(setPageIndex),
+      WeddingScreen(setPageIndex),
       CorporateEventsPage(setPageIndex),
+      BirthdayPage(setPageIndex),
     ];
+
     // final isLargeScreen =
     //     MediaQuery.of(context).size.width > AppDefined.tabletThreshWidth;
     return pages[currentPage];
   }
 }
-
-class CorporateEventsScreen {}

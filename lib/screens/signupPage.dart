@@ -30,6 +30,7 @@ class _SignUpState extends State<SignUp> {
   TextEditingController PassController = TextEditingController();
 
   TextEditingController PhoneController = TextEditingController();
+  bool isLoading = false;
 
   Uint8List? image;
   final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
@@ -149,7 +150,11 @@ class _SignUpState extends State<SignUp> {
               k,
               GestureDetector(
                 onTap: () async {
+                  setState(() {
+                    isLoading = true;
+                  });
                   String output = await authentication_methods.SignupUsers(
+                    image: image,
                     firstname: FirstController.text,
                     lastname: LastController.text,
                     email: eController.text,
@@ -157,9 +162,16 @@ class _SignUpState extends State<SignUp> {
                     password: PassController.text,
                   );
                   if (output == "SignUp Successfully") {
+                    setState(() {
+                      isLoading = false;
+                    });
                     Fluttertoast.showToast(msg: "SignUp Succesfully");
                     //  print("user created");
-                    print(FirebaseAuth.instance.currentUser!.uid);
+                    // print(FirebaseAuth.instance.currentUser!.uid);
+                    // await Firestore_method.uploadProfilePicToDatabase(
+                    //     image: image,
+                    //     uid: FirebaseAuth.instance.currentUser!.uid);
+
                     await Firestore_method.uploadProfilePicToDatabase(
                         image: image,
                         uid: FirebaseAuth.instance.currentUser!.uid);
@@ -177,7 +189,29 @@ class _SignUpState extends State<SignUp> {
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                  child: const Center(
+                  child: Center(
+                      child: isLoading
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  "Please Wait..",
+                                  style: TextStyle(color: Colors.white),
+                                )
+                              ],
+                            ):
+                  //         : Text(
+                  //             "SignUp",
+                  //             style: TextStyle(color: Colors.white),
+                  //           )),
+                  // child: const
+                   Center(
                     child: InkWell(
                       child: Text(
                         'Sign Up',
@@ -189,6 +223,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
+              ),
               ),
               const SizedBox(
                 height: 20,

@@ -21,7 +21,7 @@ class eventModel {
       required this.url1,
       required this.url2,
       required this.url3,
-      required this.url4,
+     required this.url4,
       required this.charges,
       required this.rating,
       required this.SellerName,
@@ -36,7 +36,7 @@ class eventModel {
       'url1': url1,
       'url2': url2,
       'url3': url3,
-      'url4': url4,
+       'url4': url4,
       
       'charges':charges,
       'uid': uid,
