@@ -28,3 +28,17 @@ AppBar buildAppBar(String title) {
     ],
   );
 }
+
+AppBar buildAppBar2(String title) {
+  return AppBar(
+    backgroundColor: Constants.primaryColor,
+
+    // On Android by default its false
+    centerTitle: true,
+    title: Text(
+      title,
+      style: TextStyle(color: Colors.white),
+    ),
+  
+  );
+}

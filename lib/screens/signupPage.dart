@@ -70,12 +70,10 @@ class _SignUpState extends State<SignUp> {
                         padding: const EdgeInsets.only(top: 18.0),
                         child: Stack(
                           children: [
-                            Image.network(
-                              "https://cdn-icons-png.flaticon.com/512/8207/8207765.png",
-                              height: 50,
-                            ),
-                            IconButton(
-                                onPressed: () async {
+                            Tooltip(
+                              message: "Click to upload Image",
+                              child: InkWell(
+                                onTap: () async {
                                   Uint8List? _image = await Utils().PickImage();
                                   if (_image != null) {
                                     setState(() {
@@ -85,7 +83,11 @@ class _SignUpState extends State<SignUp> {
                                     print("Image not loaded");
                                   }
                                 },
-                                icon: Icon(Icons.upload)),
+                                child: Image(
+                                  image: AssetImage("assets/uploadimg.png"),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -93,24 +95,24 @@ class _SignUpState extends State<SignUp> {
                   : Center(
                       child: Stack(
                         children: [
-                          Image.memory(
-                            image!,
-                            height: MediaQuery.of(context).size.height / 8,
-                          ),
-                          IconButton(
-                              onPressed: () async {
+                          Tooltip(
+                            message: "Click to upload Image",
+                            child: InkWell(
+                              onTap: () async {
                                 Uint8List? _image = await Utils().PickImage();
                                 if (_image != null) {
                                   setState(() {
                                     image = _image;
                                   });
+                                } else {
+                                  print("Image not loaded");
                                 }
-                                print("Image not loaded");
                               },
-                              icon: Icon(
-                                Icons.upload,
-                                size: 30,
-                              )),
+                              child: Image(
+                                image: AssetImage("assets/uploadimg.png"),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -190,40 +192,41 @@ class _SignUpState extends State<SignUp> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                   child: Center(
-                      child: isLoading
-                          ? Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                CircularProgressIndicator(
+                    child: isLoading
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              CircularProgressIndicator(
+                                color: Colors.white,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "Please Wait..",
+                                style: TextStyle(color: Colors.white),
+                              )
+                            ],
+                          )
+                        :
+                        //         : Text(
+                        //             "SignUp",
+                        //             style: TextStyle(color: Colors.white),
+                        //           )),
+                        // child: const
+                        Center(
+                            child: InkWell(
+                              child: Text(
+                                'Sign Up',
+                                style: TextStyle(
                                   color: Colors.white,
+                                  fontSize: 18.0,
                                 ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  "Please Wait..",
-                                  style: TextStyle(color: Colors.white),
-                                )
-                              ],
-                            ):
-                  //         : Text(
-                  //             "SignUp",
-                  //             style: TextStyle(color: Colors.white),
-                  //           )),
-                  // child: const
-                   Center(
-                    child: InkWell(
-                      child: Text(
-                        'Sign Up',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                        ),
-                      ),
-                    ),
+                              ),
+                            ),
+                          ),
                   ),
                 ),
-              ),
               ),
               const SizedBox(
                 height: 20,

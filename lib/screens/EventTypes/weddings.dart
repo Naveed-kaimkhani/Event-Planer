@@ -176,7 +176,9 @@ class _WeddingScreenState extends State<WeddingScreen> {
                                     Navigator.push(
                                         context,
                                         PageTransition(
-                                            child: DetailScreen(),
+                                            child: DetailScreen(
+                                                EventId:
+                                                    _eventList[index].eventId),
                                             type: PageTransitionType
                                                 .bottomToTop));
                                   },

@@ -39,18 +39,18 @@ class _DetailPageState extends State<DetailPage> {
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  // child: Container(
-                  //   height: 40,
-                  //   width: 40,
-                  //   decoration: BoxDecoration(
-                  //     borderRadius: BorderRadius.circular(25),
-                  //     color: Constants.primaryColor.withOpacity(.15),
-                  //   ),
-                  //   child: Icon(
-                  //     Icons.close,
-                  //     color: Constants.primaryColor,
-                  //   ),
-                  // ),
+                  child: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Constants.primaryColor.withOpacity(.15),
+                    ),
+                    child: Icon(
+                      Icons.close,
+                      color: Constants.primaryColor,
+                    ),
+                  ),
                 ),
                 GestureDetector(
                   onTap: () {

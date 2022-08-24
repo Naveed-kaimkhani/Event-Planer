@@ -1,3 +1,5 @@
+import 'package:eventplaner/main.dart';
+import 'package:eventplaner/rootwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -9,6 +11,7 @@ import '../constant/constants.dart';
 import '../widgets/customizedappBar.dart';
 
 import 'detailsPage.dart';
+import 'detailsPageV2.dart';
 
 class HomePagev2 extends StatefulWidget {
   final Function? setPageIndex;
@@ -67,8 +70,8 @@ class _HomePagev2State extends State<HomePagev2> {
     bool toggleIsFavorated(bool isFavorited) {
       return !isFavorited;
     }
-
     return Scaffold(
+
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -76,23 +79,30 @@ class _HomePagev2State extends State<HomePagev2> {
               child: Column(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 300, top: 40),
+                    margin: EdgeInsets.only(left: 330, top: 40),
                     height: 50,
                     width: 50,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('assets/google.png')),
+                          image: AssetImage('assets/account.png')),
                       //color: Constants.primaryColor,
                       borderRadius: BorderRadius.circular(50),
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.only(top: 20),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      child: Text(
+                        "Hi, Anousha !\nWhat are You looking for ?",
+                        style: TextStyle(
+                            fontSize: 33, color: Constants.primaryColor),
+                      )),
+                  Container(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                          margin: EdgeInsets.only(top: 160),
+                          margin: EdgeInsets.only(top: 10),
                           width: 400,
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -100,7 +110,7 @@ class _HomePagev2State extends State<HomePagev2> {
                             children: [
                               Icon(
                                 Icons.search,
-                                color: Colors.black54.withOpacity(.6),
+                                color: Constants.primaryColor.withOpacity(.6),
                               ),
                               const Expanded(
                                   child: TextField(
@@ -113,7 +123,7 @@ class _HomePagev2State extends State<HomePagev2> {
                               )),
                               Icon(
                                 Icons.mic,
-                                color: Colors.black54.withOpacity(.6),
+                                color: Constants.primaryColor.withOpacity(.6),
                               ),
                             ],
                           ),
@@ -182,7 +192,7 @@ class _HomePagev2State extends State<HomePagev2> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(40),
                             image: DecorationImage(
-                                image: AssetImage('assets/google.png'))),
+                                image: AssetImage('assets/account.png'))),
                       ),
                       SizedBox(
                         width: 1,
@@ -196,20 +206,32 @@ class _HomePagev2State extends State<HomePagev2> {
                     ],
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 10),
-                    child: Row(children: [
-                      Text(
-                        "Event Name",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ]),
-                  ),
-                  Container(
-                    height: 400,
-                    width: 400,
-                    decoration: BoxDecoration(
-                        color: Colors.pink,
-                        borderRadius: BorderRadius.circular(10)),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    height: 300.0,
+                    width: size.width,
+                    child: AspectRatio(
+                        aspectRatio: 1.81,
+                        child: Stack(children: [
+                          PageView.builder(
+                            itemCount: demoallImages.length,
+                            itemBuilder: ((context, index) => GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            child: DetailScreen(
+                                                EventId:
+                                                    _eventList[index].eventId),
+                                            type: PageTransitionType
+                                                .bottomToTop));
+                                  },
+                                  child: Image.asset(
+                                    demoallImages[index],
+                                    fit: BoxFit.cover,
+                                  ),
+                                )),
+                          ),
+                        ])),
                   ),
                   SizedBox(
                     height: 10,
@@ -223,7 +245,7 @@ class _HomePagev2State extends State<HomePagev2> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(40),
                             image: DecorationImage(
-                                image: AssetImage('assets/google.png'))),
+                                image: AssetImage('assets/account.png'))),
                       ),
                       SizedBox(
                         width: 1,
@@ -237,20 +259,32 @@ class _HomePagev2State extends State<HomePagev2> {
                     ],
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 10),
-                    child: Row(children: [
-                      Text(
-                        "Event Name",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ]),
-                  ),
-                  Container(
-                    height: 400,
-                    width: 400,
-                    decoration: BoxDecoration(
-                        color: Colors.pink,
-                        borderRadius: BorderRadius.circular(10)),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    height: 300.0,
+                    width: size.width,
+                    child: AspectRatio(
+                        aspectRatio: 1.81,
+                        child: Stack(children: [
+                          PageView.builder(
+                            itemCount: demoallImages.length,
+                            itemBuilder: ((context, index) => GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            child: DetailScreen(
+                                                EventId:
+                                                    _eventList[index].eventId),
+                                            type: PageTransitionType
+                                                .bottomToTop));
+                                  },
+                                  child: Image.asset(
+                                    demoallImages[index],
+                                    fit: BoxFit.cover,
+                                  ),
+                                )),
+                          ),
+                        ])),
                   ),
                   SizedBox(
                     height: 10,
@@ -264,7 +298,7 @@ class _HomePagev2State extends State<HomePagev2> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(40),
                             image: DecorationImage(
-                                image: AssetImage('assets/google.png'))),
+                                image: AssetImage('assets/account.png'))),
                       ),
                       SizedBox(
                         width: 1,
@@ -278,20 +312,32 @@ class _HomePagev2State extends State<HomePagev2> {
                     ],
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 10),
-                    child: Row(children: [
-                      Text(
-                        "Event Name",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ]),
-                  ),
-                  Container(
-                    height: 400,
-                    width: 400,
-                    decoration: BoxDecoration(
-                        color: Colors.pink,
-                        borderRadius: BorderRadius.circular(10)),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    height: 300.0,
+                    width: size.width,
+                    child: AspectRatio(
+                        aspectRatio: 1.81,
+                        child: Stack(children: [
+                          PageView.builder(
+                            itemCount: demoallImages.length,
+                            itemBuilder: ((context, index) => GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            child: DetailScreen(
+                                                EventId:
+                                                    _eventList[index].eventId),
+                                            type: PageTransitionType
+                                                .bottomToTop));
+                                  },
+                                  child: Image.asset(
+                                    demoallImages[index],
+                                    fit: BoxFit.cover,
+                                  ),
+                                )),
+                          ),
+                        ])),
                   ),
                 ],
               ),
