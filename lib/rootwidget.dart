@@ -28,8 +28,8 @@ class _rootPageState extends State<rootPage> {
     pages = [
       HomePagev2(setPageIndex),
       WeddingScreen(setPageIndex),
-      CorporateEventsPage(setPageIndex),
-      BirthdayPage(setPageIndex),
+      CorporateEventScreen(setPageIndex),
+      BirthdayScreen(setPageIndex),
     ];
 
     // final isLargeScreen =

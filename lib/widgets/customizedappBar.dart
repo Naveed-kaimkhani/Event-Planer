@@ -13,14 +13,18 @@ AppBar buildAppBar(String title) {
       style: TextStyle(color: Colors.white),
     ),
     actions: <Widget>[
-      IconButton(
-        icon: Icon(Icons.search),
-        onPressed: () {},
-      ),
-      SizedBox(
-          // It means 5 because by out defaultSize = 10
-          //  width: SizeConfig.defaultSize * 0.5,
-          )
+      PopupMenuButton(
+          icon: Icon(Icons.crib),
+          itemBuilder: (context) => [
+                PopupMenuItem(
+                  child: Text("Indoor"),
+                  value: 1,
+                ),
+                PopupMenuItem(
+                  child: Text("Outdoor"),
+                  value: 2,
+                )
+              ])
     ],
   );
 }

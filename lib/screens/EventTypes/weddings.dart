@@ -1,9 +1,14 @@
+import 'package:eventplaner/Model/eventModelV2.dart';
+import 'package:eventplaner/screens/detailsPageV2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:page_transition/page_transition.dart';
 
+import '../../Model/demoStuff/demoimages.dart';
 import '../../constant/constants.dart';
 import '../../widgets/customizedappBar.dart';
+import '../detailsPage.dart';
 
 class WeddingScreen extends StatefulWidget {
   final Function? setPageIndex;
@@ -19,6 +24,9 @@ class WeddingScreen extends StatefulWidget {
 class _WeddingScreenState extends State<WeddingScreen> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
+    List<Event> _eventList = Event.eventList;
     int selectedIndex = 0;
     List<String> _eventTypes = [
       'All',
@@ -141,7 +149,7 @@ class _WeddingScreenState extends State<WeddingScreen> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(40),
                             image: DecorationImage(
-                                image: AssetImage('assets/google.png'))),
+                                image: AssetImage('assets/account.png'))),
                       ),
                       SizedBox(
                         width: 1,
@@ -155,20 +163,30 @@ class _WeddingScreenState extends State<WeddingScreen> {
                     ],
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 10),
-                    child: Row(children: [
-                      Text(
-                        "Event Name",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ]),
-                  ),
-                  Container(
-                    height: 400,
-                    width: 400,
-                    decoration: BoxDecoration(
-                        color: Colors.pink,
-                        borderRadius: BorderRadius.circular(10)),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    height: 300.0,
+                    width: size.width,
+                    child: AspectRatio(
+                        aspectRatio: 1.81,
+                        child: Stack(children: [
+                          PageView.builder(
+                            itemCount: demoallImages.length,
+                            itemBuilder: ((context, index) => GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            child: DetailScreen(),
+                                            type: PageTransitionType
+                                                .bottomToTop));
+                                  },
+                                  child: Image.asset(
+                                    demoallImages[index],
+                                    fit: BoxFit.cover,
+                                  ),
+                                )),
+                          ),
+                        ])),
                   ),
                   Row(
                     children: [

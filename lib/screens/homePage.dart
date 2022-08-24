@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 300, top: 40),
+                    margin: EdgeInsets.only(left: 300, top: 30),
                     height: 50,
                     width: 50,
                     decoration: BoxDecoration(
