@@ -1,5 +1,6 @@
 import 'package:eventplaner/main.dart';
 import 'package:eventplaner/rootwidget.dart';
+import 'package:eventplaner/widgets/Containerwidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -70,8 +71,8 @@ class _HomePagev2State extends State<HomePagev2> {
     bool toggleIsFavorated(bool isFavorited) {
       return !isFavorited;
     }
-    return Scaffold(
 
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -91,11 +92,26 @@ class _HomePagev2State extends State<HomePagev2> {
                   ),
                   Container(
                       padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                      child: Text(
-                        "Hi, Anousha !\nWhat are You looking for ?",
-                        style: TextStyle(
-                            fontSize: 33, color: Constants.primaryColor),
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(right: 280),
+                            child: Text(
+                              "Explore",
+                              style: TextStyle(
+                                  fontSize: 30, color: Constants.primaryColor),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Hi Syeda ! we are here to make your event remarkable",
+                            style: TextStyle(
+                                fontSize: 18, color: Constants.primaryColor),
+                          ),
+                        ],
                       )),
                   Container(
                     child: Row(
@@ -164,7 +180,7 @@ class _HomePagev2State extends State<HomePagev2> {
                               child: Text(
                                 _eventTypes[index],
                                 style: TextStyle(
-                                  fontSize: 22.0,
+                                  fontSize: 20.0,
                                   fontWeight: selectedIndex == index
                                       ? FontWeight.bold
                                       : FontWeight.bold,
@@ -185,15 +201,7 @@ class _HomePagev2State extends State<HomePagev2> {
                 children: [
                   Row(
                     children: [
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(40),
-                            image: DecorationImage(
-                                image: AssetImage('assets/account.png'))),
-                      ),
+                      ProfileContainer(),
                       SizedBox(
                         width: 1,
                       ),
@@ -206,7 +214,7 @@ class _HomePagev2State extends State<HomePagev2> {
                     ],
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     height: 300.0,
                     width: size.width,
                     child: AspectRatio(
@@ -238,15 +246,7 @@ class _HomePagev2State extends State<HomePagev2> {
                   ),
                   Row(
                     children: [
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(40),
-                            image: DecorationImage(
-                                image: AssetImage('assets/account.png'))),
-                      ),
+                      ProfileContainer(),
                       SizedBox(
                         width: 1,
                       ),
@@ -258,48 +258,18 @@ class _HomePagev2State extends State<HomePagev2> {
                       ),
                     ],
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    height: 300.0,
-                    width: size.width,
-                    child: AspectRatio(
-                        aspectRatio: 1.81,
-                        child: Stack(children: [
-                          PageView.builder(
-                            itemCount: demoallImages.length,
-                            itemBuilder: ((context, index) => GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        PageTransition(
-                                            child: DetailScreen(
-                                                EventId:
-                                                    _eventList[index].eventId),
-                                            type: PageTransitionType
-                                                .bottomToTop));
-                                  },
-                                  child: Image.asset(
-                                    demoallImages[index],
-                                    fit: BoxFit.cover,
-                                  ),
-                                )),
-                          ),
-                        ])),
-                  ),
+                  Imagecontainer(Image(
+                    image: AssetImage(
+                      "assets/b6.jpg",
+                    ),
+                    fit: BoxFit.fill,
+                  )),
                   SizedBox(
                     height: 10,
                   ),
                   Row(
                     children: [
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(40),
-                            image: DecorationImage(
-                                image: AssetImage('assets/account.png'))),
-                      ),
+                      ProfileContainer(),
                       SizedBox(
                         width: 1,
                       ),
@@ -311,34 +281,12 @@ class _HomePagev2State extends State<HomePagev2> {
                       ),
                     ],
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    height: 300.0,
-                    width: size.width,
-                    child: AspectRatio(
-                        aspectRatio: 1.81,
-                        child: Stack(children: [
-                          PageView.builder(
-                            itemCount: demoallImages.length,
-                            itemBuilder: ((context, index) => GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        PageTransition(
-                                            child: DetailScreen(
-                                                EventId:
-                                                    _eventList[index].eventId),
-                                            type: PageTransitionType
-                                                .bottomToTop));
-                                  },
-                                  child: Image.asset(
-                                    demoallImages[index],
-                                    fit: BoxFit.cover,
-                                  ),
-                                )),
-                          ),
-                        ])),
-                  ),
+                  Imagecontainer(Image(
+                    image: AssetImage(
+                      "assets/w5.jpg",
+                    ),
+                    fit: BoxFit.fill,
+                  )),
                 ],
               ),
             ),
