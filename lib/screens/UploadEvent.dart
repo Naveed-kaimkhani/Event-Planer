@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:eventplaner/constant/constants.dart';
 import 'package:eventplaner/constant/inputfields.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -40,13 +41,13 @@ class _UploadEventState extends State<UploadEvent> {
   Uint8List? image1;
   Uint8List? image2;
   Uint8List? image3;
- 
+
   bool isLoading = false;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    print(FirebaseAuth.instance.currentUser!.uid);
+    // print(FirebaseAuth.instance.currentUser!.uid);
   }
 
   @override
@@ -57,11 +58,20 @@ class _UploadEventState extends State<UploadEvent> {
 
     return SafeArea(
         child: Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+
+        // actions: [
+        //   Icon(Icons.arrow_back_ios_new_outlined),
+        //   Text("Edit"),
+        // ],
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 40, horizontal: 20),
           child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             Text("Let People Know ",
                 style: TextStyle(
                   fontSize: 30,
@@ -97,7 +107,7 @@ class _UploadEventState extends State<UploadEvent> {
                 width: MediaQuery.of(context).size.width * 0.8,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: Colors.purple.withAlpha(60),
+                  color: Color(0x26741b47),
                 ),
 
                 // ignore: prefer_const_constructors
@@ -119,15 +129,14 @@ class _UploadEventState extends State<UploadEvent> {
                   ),
                 )),
             k,
-            Text("Upload atleast four pictures"),
+            Text("Upload atleast three pictures"),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 UploadImage1(image1),
-
                 UploadImage2(image2),
                 UploadImage3(image3),
-               
+
                 // image1 == null
                 //     ? Padding(
                 //         padding: const EdgeInsets.only(top: 18.0),
@@ -180,7 +189,7 @@ class _UploadEventState extends State<UploadEvent> {
                 height: 40,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: Colors.purple,
+                  color: Constants.primaryColor,
                 ),
                 child: GestureDetector(
                   child: Center(
@@ -227,11 +236,9 @@ class _UploadEventState extends State<UploadEvent> {
                       isLoading = true;
                     });
                     String output = await Firestore_method.uploadEventToDb(
-
                       image1: image1,
                       image2: image2,
                       image3: image3,
-                     
                       title: titleController.text,
                       description: descripontroller.text,
                       charges: double.parse(chargesController.text),
@@ -285,10 +292,7 @@ class _UploadEventState extends State<UploadEvent> {
             padding: const EdgeInsets.only(top: 18.0),
             child: Stack(
               children: [
-                Image.network(
-                  "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
-                  height: 60,
-                ),
+                Icon(Icons.image),
                 IconButton(
                     onPressed: () async {
                       Uint8List? _image = await Utils().PickImage();
@@ -332,10 +336,7 @@ class _UploadEventState extends State<UploadEvent> {
             padding: const EdgeInsets.only(top: 18.0),
             child: Stack(
               children: [
-                Image.network(
-                  "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
-                  height: 60,
-                ),
+                Icon(Icons.image),
                 IconButton(
                     onPressed: () async {
                       Uint8List? _image = await Utils().PickImage();
@@ -378,10 +379,7 @@ class _UploadEventState extends State<UploadEvent> {
             padding: const EdgeInsets.only(top: 18.0),
             child: Stack(
               children: [
-                Image.network(
-                  "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
-                  height: 60,
-                ),
+                Icon(Icons.image),
                 IconButton(
                     onPressed: () async {
                       Uint8List? _image = await Utils().PickImage();

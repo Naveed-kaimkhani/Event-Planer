@@ -24,7 +24,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
+  
   get drawerHeader => null;
 
   @override
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         //      home: SignUpPage(),
 
-        home: SignUp(),
+        home: authentication_methods.handleAuthState(),
       ),
     );
   }

@@ -45,7 +45,10 @@ dependencies:
   provider: ^6.0.3
   url_launcher: ^6.1.5
   google_sign_in: ^5.4.1
+  flutter_rating_bar: ^4.0.1
   flutter_drawers: ^0.0.3+3
+  
+  
 
 dev_dependencies:
   flutter_test:

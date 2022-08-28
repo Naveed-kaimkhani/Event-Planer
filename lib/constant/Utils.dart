@@ -4,8 +4,23 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Utils {
+static void MakeCall({String? phoneNo}) async {
+    final _call = 'tel:$phoneNo';
+    if (await canLaunch(_call)) {
+      await launch(_call);
+    }
+  }
+  static void message({String? phoneNo}) async {
+    final _mess = 'sms:$phoneNo';
+    if (await canLaunch(_mess)) {
+      await launch(_mess);
+    }
+  }
+  
+  
 
   // Future<Uint8List?> PickImage() async {
   //     ImagePicker picker=ImagePicker();
@@ -53,6 +68,10 @@ String getUid() {
           ),
         ),
       ),
+
+      
     );
   }
 }
+
+

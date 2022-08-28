@@ -7,8 +7,8 @@ import 'package:page_transition/page_transition.dart';
 import '../../Model/eventModelV2.dart';
 import '../../constant/constants.dart';
 
-class WeddingsPage extends StatefulWidget {
-  const WeddingsPage(
+class OthersPage extends StatefulWidget {
+  const OthersPage(
     this.setPageIndex, {
     Key? key,
   }) : super(key: key);
@@ -16,10 +16,10 @@ class WeddingsPage extends StatefulWidget {
   final Function? setPageIndex;
 
   @override
-  State<WeddingsPage> createState() => _WeddingsPageState();
+  State<OthersPage> createState() => _OthersPageState();
 }
 
-class _WeddingsPageState extends State<WeddingsPage> {
+class _OthersPageState extends State<OthersPage> {
   @override
   @override
   Widget build(BuildContext context) {
@@ -29,12 +29,7 @@ class _WeddingsPageState extends State<WeddingsPage> {
     List<Event> _eventList = Event.eventList;
 
     //Plants category
-    List<String> _eventTypes = [
-      'All',
-      'Weddings',
-      'Birthdays',
-      'Others'
-    ];
+    List<String> _eventTypes = ['All', 'Weddings', 'Birthdays', 'Others'];
     //Toggle Favorite button
     bool toggleIsFavorated(bool isFavorited) {
       return !isFavorited;
@@ -127,43 +122,7 @@ class _WeddingsPageState extends State<WeddingsPage> {
         Container(
           child: Row(children: [
             Text(
-              "  Top Designs",
-              style: TextStyle(
-                  color: Constants.primaryColor,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500),
-            ),
-          ]),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        Container(
-          height: 340,
-          child: GridView(
-            scrollDirection: Axis.horizontal,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1, mainAxisSpacing: 10.0),
-            children: <Widget>[
-          allImagesContainer(context,Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/b5.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/bs3.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/b5.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/bs3.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-            ],
-          ),
-        ),
-        Container(
-          child: Row(children: [
-            Text(
-              "  Top Planners",
+              "  Formal Parties",
               style: TextStyle(
                   color: Constants.primaryColor,
                   fontSize: 22,
@@ -199,7 +158,7 @@ class _WeddingsPageState extends State<WeddingsPage> {
         Container(
           child: Row(children: [
             Text(
-              "  Exclusives",
+              "  Official Events",
               style: TextStyle(
                   color: Constants.primaryColor,
                   fontSize: 22,
@@ -217,7 +176,115 @@ class _WeddingsPageState extends State<WeddingsPage> {
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1, mainAxisSpacing: 10.0),
             children: <Widget>[
+               allImagesContainer(context,Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+              allImagesContainer(context,Image(image: AssetImage("assets/b5.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+              allImagesContainer(context,Image(image: AssetImage("assets/bs3.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
               allImagesContainer(context,Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+              allImagesContainer(context,Image(image: AssetImage("assets/b5.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+              allImagesContainer(context,Image(image: AssetImage("assets/bs3.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+            ],
+          ),
+        ),
+        Container(
+          child: Row(children: [
+            Text(
+              "  Bridal Showers",
+              style: TextStyle(
+                  color: Constants.primaryColor,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w500),
+            ),
+          ]),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Container(
+          height: 340,
+          child: GridView(
+            scrollDirection: Axis.horizontal,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1, mainAxisSpacing: 10.0),
+            children: <Widget>[
+               allImagesContainer(context,Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+              allImagesContainer(context,Image(image: AssetImage("assets/b5.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+              allImagesContainer(context,Image(image: AssetImage("assets/bs3.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+              allImagesContainer(context,Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+              allImagesContainer(context,Image(image: AssetImage("assets/b5.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+              allImagesContainer(context,Image(image: AssetImage("assets/bs3.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+            ],
+          ),
+        ),
+        Container(
+          child: Row(children: [
+            Text(
+              "  Baby Showers",
+              style: TextStyle(
+                  color: Constants.primaryColor,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w500),
+            ),
+          ]),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Container(
+          height: 340,
+          child: GridView(
+            scrollDirection: Axis.horizontal,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1, mainAxisSpacing: 10.0),
+            children: <Widget>[
+           allImagesContainer(context,Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+              allImagesContainer(context,Image(image: AssetImage("assets/b5.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+              allImagesContainer(context,Image(image: AssetImage("assets/bs3.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+              allImagesContainer(context,Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+              allImagesContainer(context,Image(image: AssetImage("assets/b5.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+              allImagesContainer(context,Image(image: AssetImage("assets/bs3.jpg")),
+                  "Blue themed birhday party", "package:4000Rs"),
+            ],
+          ),
+        ),
+        Container(
+          child: Row(children: [
+            Text(
+              "  Themed Parties",
+              style: TextStyle(
+                  color: Constants.primaryColor,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w500),
+            ),
+          ]),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Container(
+          height: 340,
+          child: GridView(
+            scrollDirection: Axis.horizontal,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1, mainAxisSpacing: 10.0),
+            children: <Widget>[
+             allImagesContainer(context,Image(image: AssetImage("assets/w4.jpg")),
                   "Blue themed birhday party", "package:4000Rs"),
               allImagesContainer(context,Image(image: AssetImage("assets/b5.jpg")),
                   "Blue themed birhday party", "package:4000Rs"),

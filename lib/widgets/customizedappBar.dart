@@ -13,18 +13,18 @@ AppBar buildAppBar(String title) {
       style: TextStyle(color: Colors.white),
     ),
     actions: <Widget>[
-      PopupMenuButton(
-          icon: Icon(Icons.crib),
-          itemBuilder: (context) => [
-                PopupMenuItem(
-                  child: Text("Indoor"),
-                  value: 1,
-                ),
-                PopupMenuItem(
-                  child: Text("Outdoor"),
-                  value: 2,
-                )
-              ])
+      // PopupMenuButton(
+      //     icon: Icon(Icons.crib),
+      //     itemBuilder: (context) => [
+      //           PopupMenuItem(
+      //             child: Text("Indoor"),
+      //             value: 1,
+      //           ),
+      //           PopupMenuItem(
+      //             child: Text("Outdoor"),
+      //             value: 2,
+      //           )
+      //         ])
     ],
   );
 }
@@ -39,7 +39,5 @@ AppBar buildAppBar2(String title) {
       title,
       style: TextStyle(color: Colors.white),
     ),
-  
   );
 }
-
