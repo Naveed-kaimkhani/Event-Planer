@@ -53,11 +53,10 @@ class _HomePagev2State extends State<HomePagev2> {
 
   @override
   Widget build(BuildContext context) {
-
-     User_Details? userdetails =
-     Provider.of<UserDetailsProvider>(context,listen: false).userDetails;
-     print("first name ${userdetails!.firstName}");
-     print( "last name ${userdetails.lastName}");
+    //  User_Details? userdetails =
+    //  Provider.of<UserDetailsProvider>(context,listen: false).userDetails;
+    //  print("first name ${userdetails!.firstName}");
+    //  print( "last name ${userdetails.lastName}");
 
     int selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
@@ -200,31 +199,33 @@ class _HomePagev2State extends State<HomePagev2> {
               allImagesContainer(
                   context,
                   Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
                   "Blue themed birhday party",
-                  "package:4000Rs"),
-              // allImagesContainer(
-              //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/b5.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/bs3.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs"),
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"),
               allImagesContainer(
                   context,
                   Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
                   "Blue themed birhday party",
-                  "package:4000Rs"),
-              // allImagesContainer(
-              //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
-              // allImagesContainer(Image(image: AssetImage("assets/b5.jpg")),
-              //     "Blue themed birhday party", "package:4000Rs"),
-              // allImagesContainer(Image(image: AssetImage("assets/bs3.jpg")),
-              //     "Blue themed birhday party", "package:4000Rs"),
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"),
+              allImagesContainer(
+                  context,
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party",
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"),
             ],
           ),
         ),
@@ -251,34 +252,46 @@ class _HomePagev2State extends State<HomePagev2> {
             children: <Widget>[
               allImagesContainer(
                   context,
-                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/wed2.jpg")),
+                  Image(image: AssetImage("assets/wedd.jpg")),
+                  Image(image: AssetImage("assets/wedd3.jpg")),
                   "Blue themed birhday party",
-                  "package:4000Rs"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/b5.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/bs3.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs"),
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"),
+              // allImagesContainer(
+              //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
               allImagesContainer(
                   context,
                   Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
                   "Blue themed birhday party",
-                  "package:4000Rs"),
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"),
               allImagesContainer(
                   context,
-                  Image(image: AssetImage("assets/b5.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
                   "Blue themed birhday party",
-                  "package:4000Rs"),
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"),
               allImagesContainer(
                   context,
-                  Image(image: AssetImage("assets/bs3.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
                   "Blue themed birhday party",
-                  "package:4000Rs"),
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"),
             ],
           ),
         ),
@@ -306,33 +319,45 @@ class _HomePagev2State extends State<HomePagev2> {
               allImagesContainer(
                   context,
                   Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
                   "Blue themed birhday party",
-                  "package:4000Rs"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/b5.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/bs3.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs"),
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"),
+              // allImagesContainer(
+              //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
               allImagesContainer(
                   context,
                   Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
                   "Blue themed birhday party",
-                  "package:4000Rs"),
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"),
               allImagesContainer(
                   context,
-                  Image(image: AssetImage("assets/b5.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
                   "Blue themed birhday party",
-                  "package:4000Rs"),
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"),
               allImagesContainer(
                   context,
-                  Image(image: AssetImage("assets/bs3.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
                   "Blue themed birhday party",
-                  "package:4000Rs"),
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"),
             ],
           ),
         ),
@@ -359,34 +384,46 @@ class _HomePagev2State extends State<HomePagev2> {
             children: <Widget>[
               allImagesContainer(
                   context,
+                  Image(image: AssetImage("assets/b5 (copy).jpg")),
+                  Image(image: AssetImage("assets/b6.jpg")),
+                  Image(image: AssetImage("assets/Ce.jpg")),
+                  "Blue themed birhday party",
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"),
+              // allImagesContainer(
+              //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
+              allImagesContainer(
+                  context,
+                  Image(image: AssetImage("assets/bride.jpg")),
+                  Image(image: AssetImage("assets/bridalshower3.jpg")),
+                  Image(image: AssetImage("assets/bri.jpg")),
+                  "Blue themed birhday party",
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"),
+              allImagesContainer(
+                  context,
+                  Image(image: AssetImage("assets/wed2.jpg")),
+                  Image(image: AssetImage("assets/wedd.jpg")),
+                  Image(image: AssetImage("assets/wedd3.jpg")),
+                  "Blue themed birhday party",
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"),
+              allImagesContainer(
+                  context,
+                  Image(image: AssetImage("assets/w4.jpg")),
+                  Image(image: AssetImage("assets/w4.jpg")),
                   Image(image: AssetImage("assets/w4.jpg")),
                   "Blue themed birhday party",
-                  "package:4000Rs"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/b5.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/bs3.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/b5.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/bs3.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs"),
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"),
             ],
           ),
         ),

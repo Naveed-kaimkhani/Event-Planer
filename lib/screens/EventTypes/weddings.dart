@@ -29,12 +29,7 @@ class _WeddingsPageState extends State<WeddingsPage> {
     List<Event> _eventList = Event.eventList;
 
     //Plants category
-    List<String> _eventTypes = [
-      'All',
-      'Weddings',
-      'Birthdays',
-      'Others'
-    ];
+    List<String> _eventTypes = ['All', 'Weddings', 'Birthdays', 'Others'];
     //Toggle Favorite button
     bool toggleIsFavorated(bool isFavorited) {
       return !isFavorited;
@@ -145,18 +140,52 @@ class _WeddingsPageState extends State<WeddingsPage> {
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1, mainAxisSpacing: 10.0),
             children: <Widget>[
-          allImagesContainer(context,Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/b5.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/bs3.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/b5.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/bs3.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
+             allImagesContainer(
+                  context,
+                  Image(image: AssetImage("assets/w4.jpg")),
+                   Image(image: AssetImage("assets/w4.jpg")),
+                    Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party",
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"
+                  ),
+              // allImagesContainer(
+              //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
+              allImagesContainer(
+                  context,
+                  Image(image: AssetImage("assets/w4.jpg")),
+                   Image(image: AssetImage("assets/w4.jpg")),
+                    Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party",
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"
+                  ),
+                allImagesContainer(
+                  context,
+                  Image(image: AssetImage("assets/w4.jpg")),
+                   Image(image: AssetImage("assets/w4.jpg")),
+                    Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party",
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"
+                  ),
+            allImagesContainer(
+                  context,
+                  Image(image: AssetImage("assets/w4.jpg")),
+                   Image(image: AssetImage("assets/w4.jpg")),
+                    Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party",
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"
+                  ),
             ],
           ),
         ),
@@ -181,18 +210,52 @@ class _WeddingsPageState extends State<WeddingsPage> {
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1, mainAxisSpacing: 10.0),
             children: <Widget>[
-              allImagesContainer(context,Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/b5.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/bs3.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/b5.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/bs3.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
+             allImagesContainer(
+                  context,
+                  Image(image: AssetImage("assets/w4.jpg")),
+                   Image(image: AssetImage("assets/w4.jpg")),
+                    Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party",
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"
+                  ),
+              // allImagesContainer(
+              //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
+              allImagesContainer(
+                  context,
+                  Image(image: AssetImage("assets/w4.jpg")),
+                   Image(image: AssetImage("assets/w4.jpg")),
+                    Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party",
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"
+                  ),
+                allImagesContainer(
+                  context,
+                  Image(image: AssetImage("assets/w4.jpg")),
+                   Image(image: AssetImage("assets/w4.jpg")),
+                    Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party",
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"
+                  ),
+            allImagesContainer(
+                  context,
+                  Image(image: AssetImage("assets/w4.jpg")),
+                   Image(image: AssetImage("assets/w4.jpg")),
+                    Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party",
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"
+                  ),
             ],
           ),
         ),
@@ -217,18 +280,52 @@ class _WeddingsPageState extends State<WeddingsPage> {
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1, mainAxisSpacing: 10.0),
             children: <Widget>[
-              allImagesContainer(context,Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/b5.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/bs3.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/b5.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
-              allImagesContainer(context,Image(image: AssetImage("assets/bs3.jpg")),
-                  "Blue themed birhday party", "package:4000Rs"),
+              allImagesContainer(
+                  context,
+                  Image(image: AssetImage("assets/w4.jpg")),
+                   Image(image: AssetImage("assets/w4.jpg")),
+                    Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party",
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"
+                  ),
+              // allImagesContainer(
+              //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
+              allImagesContainer(
+                  context,
+                  Image(image: AssetImage("assets/w4.jpg")),
+                   Image(image: AssetImage("assets/w4.jpg")),
+                    Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party",
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"
+                  ),
+                allImagesContainer(
+                  context,
+                  Image(image: AssetImage("assets/w4.jpg")),
+                   Image(image: AssetImage("assets/w4.jpg")),
+                    Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party",
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"
+                  ),
+            allImagesContainer(
+                  context,
+                  Image(image: AssetImage("assets/w4.jpg")),
+                   Image(image: AssetImage("assets/w4.jpg")),
+                    Image(image: AssetImage("assets/w4.jpg")),
+                  "Blue themed birhday party",
+                  "package:4000Rs",
+                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                  Image(image: AssetImage("assets/account.png")),
+                  "Username"
+                  ),
             ],
           ),
         ),

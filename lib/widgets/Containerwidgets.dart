@@ -28,16 +28,16 @@ Widget Imagecontainer(
                   width: 0.2,
                   color: Constants.primaryColor)),
           height: 250,
-          child: InkWell(
-            child: Card(
-              margin: EdgeInsets.all(10),
-              child: InkWell(
-                  onTap: () => _showPreview(context, title, image),
-                  child: image),
-              elevation: 70,
-              //  shadowColor: Color(0x26741b47).withOpacity(0.9),
-            ),
-          ),
+          // child: InkWell(
+          //   child: Card(
+          //     margin: EdgeInsets.all(10),
+          //     child: InkWell(
+          //         onTap: () => _showPreview(context, title, image),
+          //         child: image),
+          //     elevation: 70,
+          //     //  shadowColor: Color(0x26741b47).withOpacity(0.9),
+          //   ),
+          // ),
           //color: Colors.pink,
         ),
         Container(
@@ -62,7 +62,15 @@ Widget ProfileContainer() {
 }
 
 Widget allImagesContainer(
-    BuildContext context, Image image, String title, String subtitle) {
+    BuildContext context,
+    Image image,
+    Image image2,
+    Image image3,
+    String title,
+    String subtitle,
+    String description,
+    Image profileimage,
+    String name) {
   return Container(
     child: Column(
       children: [
@@ -72,7 +80,9 @@ Widget allImagesContainer(
             width: 350,
             height: 250,
             child: InkWell(
-                onTap: () => _showPreview(context, title, image), child: image),
+                onTap: () => _showPreview(context, title, image, image2, image3,
+                    description, profileimage, name),
+                child: image),
           ),
         ),
         Container(
@@ -168,7 +178,8 @@ class _ratingbRState extends State<ratingbR> {
   }
 }
 
-_showPreview(BuildContext context, String title, Image image) async {
+_showPreview(BuildContext context, String title, Image image, Image image2,
+    Image image3, String description, Image profileimage, String name) async {
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -179,7 +190,34 @@ _showPreview(BuildContext context, String title, Image image) async {
         content: Container(
           height: double.infinity,
           width: double.infinity,
-          child: image,
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Container(height: 30, width: 30, child: profileimage),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(name),
+                ],
+              ),
+              Container(
+                height: 300,
+                width: 250,
+                child: GridView(
+                  children: [image, image2, image3],
+                  scrollDirection: Axis.horizontal,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 1, mainAxisSpacing: 10.0),
+                ),
+              ),
+              Text(
+                "Description",
+                style: TextStyle(fontSize: 20),
+              ),
+              Text(description),
+            ],
+          ),
         ),
         actions: <Widget>[
           TextButton(

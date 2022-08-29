@@ -147,67 +147,62 @@ class _UserProfileState extends State<UserProfile> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0, left: 8.0),
-              child: Row(
-                children: [
-                  Text(
-                    "Events Covered",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    width: 190,
-                  ),
-                  Text(
-                    "See all",
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 6.0, left: 8.0, right: 5.0),
-              child: Container(
-                height: 340,
-                child: GridView(
-                  scrollDirection: Axis.horizontal,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 1, mainAxisSpacing: 10.0),
-                  children: <Widget>[
-                    allImagesContainer(
-                        context,
-                        Image(image: AssetImage("assets/w4.jpg")),
-                        "Blue themed birhday party",
-                        "package:4000Rs"),
-                    allImagesContainer(
-                        context,
-                        Image(image: AssetImage("assets/b5.jpg")),
-                        "Blue themed birhday party",
-                        "package:4000Rs"),
-                    allImagesContainer(
-                        context,
-                        Image(image: AssetImage("assets/bs3.jpg")),
-                        "Blue themed birhday party",
-                        "package:4000Rs"),
-                    allImagesContainer(
-                        context,
-                        Image(image: AssetImage("assets/w4.jpg")),
-                        "Blue themed birhday party",
-                        "package:4000Rs"),
-                    allImagesContainer(
-                        context,
-                        Image(image: AssetImage("assets/b5.jpg")),
-                        "Blue themed birhday party",
-                        "package:4000Rs"),
-                    allImagesContainer(
-                        context,
-                        Image(image: AssetImage("assets/bs3.jpg")),
-                        "Blue themed birhday party",
-                        "package:4000Rs"),
-                  ],
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(top: 10.0, left: 8.0),
+            //   child: Row(
+            //     children: [
+            //       Text(
+            //         "Events Covered",
+            //         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            //       ),
+            //       SizedBox(
+            //         width: 190,
+            //       ),
+            //       Text(
+            //         "See all",
+            //         style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.only(top: 6.0, left: 8.0, right: 5.0),
+            //   child: Container(
+            //     height: 340,
+            //     child: GridView(
+            //       scrollDirection: Axis.horizontal,
+            //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //           crossAxisCount: 1, mainAxisSpacing: 10.0),
+            //       children: <Widget>[
+            //            allImagesContainer(
+            //       context,
+            //       Image(image: AssetImage("assets/w4.jpg")),
+            //       "Blue themed birhday party",
+            //       "package:4000Rs",
+            //       "This event is xys",
+            //       ),
+            //   // allImagesContainer(
+            //   //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
+            //   allImagesContainer(
+            //       context,
+            //       Image(image: AssetImage("assets/b5.jpg")),
+            //       "Blue themed birhday party",
+            //       "package:4000Rs",   "This event is xys",),
+            //   allImagesContainer(
+            //       context,
+            //       Image(image: AssetImage("assets/bs3.jpg")),
+            //       "Blue themed birhday party",
+            //       "package:4000Rs",   "This event is xys",),
+            //   allImagesContainer(
+            //       context,
+            //       Image(image: AssetImage("assets/w4.jpg")),
+            //       "Blue themed birhday party",
+            //       "package:4000Rs",   "This event is xys",),
+           
+            //       ],
+            //     ),
+            //   ),
+            // ),
             // UserProfileListTile(
             //   text: "Uploaded Events",
             //   func: () {},
