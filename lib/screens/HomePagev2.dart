@@ -1,5 +1,7 @@
 import 'package:eventplaner/main.dart';
 import 'package:eventplaner/rootwidget.dart';
+import 'package:eventplaner/screens/EventTypes/BithdayScreen.dart';
+import 'package:eventplaner/screens/EventTypes/weddings.dart';
 import 'package:eventplaner/widgets/Containerwidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -19,12 +21,9 @@ import 'detailsPage.dart';
 import 'detailsPageV2.dart';
 
 class HomePagev2 extends StatefulWidget {
-  const HomePagev2(
-    this.setPageIndex, {
+  const HomePagev2({
     Key? key,
   }) : super(key: key);
-
-  final Function? setPageIndex;
 
   @override
   State<HomePagev2> createState() => _HomePagev2State();
@@ -64,7 +63,7 @@ class _HomePagev2State extends State<HomePagev2> {
     List<Event> _eventList = Event.eventList;
 
     //Plants category
-    // List<String> _eventTypes = ['All', 'Weddings', 'Birthdays', 'Others'];
+    List<String> _eventTypes = ['All', 'Weddings', 'Birthdays', 'Others'];
     //Toggle Favorite button
     bool toggleIsFavorated(bool isFavorited) {
       return !isFavorited;
@@ -74,7 +73,7 @@ class _HomePagev2State extends State<HomePagev2> {
         body: SingleChildScrollView(
       child: Column(children: [
         Container(
-          height: 250,
+          height: 200,
           color: Constants.primaryColor,
           child: Column(children: [
             Center(
@@ -110,51 +109,282 @@ class _HomePagev2State extends State<HomePagev2> {
                 ),
               ),
             ),
-            // Container(
-            //   margin: EdgeInsets.only(top: 10),
-            //   height: 50,
-            //   child: ListView.builder(
-            //       scrollDirection: Axis.horizontal,
-            //       itemCount: _eventTypes.length,
-            //       itemBuilder: (BuildContext context, int index) {
-            //         return Padding(
-            //           padding: const EdgeInsets.all(8.0),
-            //           child: InkWell(
-            //             onTap: () {
-            //               if (_eventTypes[index] == _eventTypes[0]) {
-            //                 this.widget.setPageIndex!(0);
-            //               }
-            //               if (_eventTypes[index] == _eventTypes[1]) {
-            //                 this.widget.setPageIndex!(1);
-            //               }
-            //               if (_eventTypes[index] == _eventTypes[2]) {
-            //                 this.widget.setPageIndex!(2);
-            //               }
-            //               if (_eventTypes[index] == _eventTypes[3]) {
-            //                 this.widget.setPageIndex!(3);
-            //               }
-            //             },
-            //             child: Text(
-            //               _eventTypes[index],
-            //               style: TextStyle(
-            //                   wordSpacing: 50,
-            //                   fontSize: 22.0,
-            //                   // fontWeight: selectedIndex == index
-            //                   //     ? FontWeight.bold
-            //                   //     : FontWeight.bold,
-            //                   color: selectedIndex == index
-            //                       ? Colors.white
-            //                       : Colors.white),
-            //             ),
-            //           ),
-            //         );
-            //       }),
-            //  ),
           ]),
         ),
         SizedBox(
-          height: 25,
+          height: 10,
         ),
+        Container(
+          child: Text(
+            "Categories",
+            style: TextStyle(
+              color: Constants.primaryColor,
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Pacifico',
+              // fontStyle: FontStyle.italic
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        Container(
+          child: Column(
+            children: <Widget>[
+              Text(
+                "Birthdays",
+                style: TextStyle(color: Constants.primaryColor, fontSize: 28),
+              ),
+              Card(
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BirthdaysPage()));
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    child: GridView(
+                      scrollDirection: Axis.horizontal,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 1, mainAxisSpacing: 10.0),
+                      children: <Widget>[
+                        Container(
+                          height: 150,
+                          width: 400,
+                          child: Image(
+                            image: AssetImage("assets/birthday2.jpg"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Container(
+                          height: 150,
+                          width: 400,
+                          child: Image(
+                            image: AssetImage("assets/birthf.jpg"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Container(
+                          height: 150,
+                          width: 400,
+                          child: Image(
+                            image: AssetImage("assets/b5 (copy).jpg"),
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      ],
+                    ),
+                    // color: Colors.amber,
+                    height: 400,
+                    width: 500,
+                  ),
+                ),
+              ),
+              Text(
+                "Weddings",
+                style: TextStyle(color: Constants.primaryColor, fontSize: 28),
+              ),
+              Card(
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => WeddingsPage()));
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    child: GridView(
+                      scrollDirection: Axis.horizontal,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 1, mainAxisSpacing: 10.0),
+                      children: <Widget>[
+                        Container(
+                          height: 150,
+                          width: 400,
+                          child: Image(
+                            image: AssetImage("assets/w4.jpg"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Container(
+                          height: 150,
+                          width: 400,
+                          child: Image(
+                            image: AssetImage("assets/birthf.jpg"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Container(
+                          height: 150,
+                          width: 400,
+                          child: Image(
+                            image: AssetImage("assets/b5 (copy).jpg"),
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      ],
+                    ),
+                    // color: Colors.amber,
+                    height: 400,
+                    width: 500,
+                  ),
+                ),
+              ),
+              Text(
+                "Bridal Shower",
+                style: TextStyle(color: Constants.primaryColor, fontSize: 28),
+              ),
+              Card(
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: GridView(
+                    scrollDirection: Axis.horizontal,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 1, mainAxisSpacing: 10.0),
+                    children: <Widget>[
+                      Container(
+                        height: 150,
+                        width: 400,
+                        child: Image(
+                          image: AssetImage("assets/bride.jpg"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Container(
+                        height: 150,
+                        width: 400,
+                        child: Image(
+                          image: AssetImage("assets/birthf.jpg"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Container(
+                        height: 150,
+                        width: 400,
+                        child: Image(
+                          image: AssetImage("assets/b5 (copy).jpg"),
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    ],
+                  ),
+                  // color: Colors.amber,
+                  height: 400,
+                  width: 500,
+                ),
+              ),
+              Text(
+                "Baby Shower",
+                style: TextStyle(color: Constants.primaryColor, fontSize: 28),
+              ),
+              Card(
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: GridView(
+                    scrollDirection: Axis.horizontal,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 1, mainAxisSpacing: 10.0),
+                    children: <Widget>[
+                      Container(
+                        height: 150,
+                        width: 400,
+                        child: Image(
+                          image: AssetImage("assets/babyshower1.jpg"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Container(
+                        height: 150,
+                        width: 400,
+                        child: Image(
+                          image: AssetImage("assets/birthf.jpg"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Container(
+                        height: 150,
+                        width: 400,
+                        child: Image(
+                          image: AssetImage("assets/b5 (copy).jpg"),
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    ],
+                  ),
+                  // color: Colors.amber,
+                  height: 400,
+                  width: 500,
+                ),
+              ),
+              // Container(
+              //   color: Colors.black,
+              //   height: 300,
+              //   width: 500,
+              // ),
+              // Text(
+              //   "Graduation Party",
+              //   style: TextStyle(fontSize: 28),
+              // ),
+              // Container(
+              //   color: Colors.black,
+              //   height: 300,
+              //   width: 500,
+              // ),
+              // Text(
+              //   "Official Events",
+              //   style: TextStyle(fontSize: 28),
+              // ),
+            ],
+          ),
+        ),
+        // Container(
+        //   color: Colors.white,
+        //   margin: EdgeInsets.only(top: 10),
+        //   height: 400,
+        //   child: ListView.builder(
+        //       scrollDirection: Axis.vertical,
+        //       itemCount: _eventTypes.length,
+        //       itemBuilder: (BuildContext context, int index) {
+        //         return Padding(
+        //           padding: const EdgeInsets.all(8.0),
+        //           child: InkWell(
+        //               onTap: () {
+        //                 if (_eventTypes[index] == _eventTypes[0]) {
+        //                   this.widget.setPageIndex!(0);
+        //                 }
+        //                 if (_eventTypes[index] == _eventTypes[1]) {
+        //                   this.widget.setPageIndex!(1);
+        //                 }
+        //                 if (_eventTypes[index] == _eventTypes[2]) {
+        //                   this.widget.setPageIndex!(2);
+        //                 }
+        //                 if (_eventTypes[index] == _eventTypes[3]) {
+        //                   this.widget.setPageIndex!(3);
+        //                 }
+        //               },
+        //               child: Center(
+        //                 child: Container(
+        //                   child: Text(
+        //                     _eventTypes[index],
+        //                     style: TextStyle(
+        //                         wordSpacing: 50,
+        //                         fontSize: 22.0,
+        //                         // fontWeight: selectedIndex == index
+        //                         //     ? FontWeight.bold
+        //                         //     : FontWeight.bold,
+        //                         color: selectedIndex == index
+        //                             ? Constants.primaryColor
+        //                             : Constants.primaryColor),
+        //                   ),
+        //                 ),
+        //               )),
+        //         );
+        //       }),
+        // ),
         // Container(
         //   child: Row(children: [
         //     Text(

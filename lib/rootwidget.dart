@@ -31,10 +31,10 @@ class _rootPageState extends State<rootPage> {
   @override
   Widget build(BuildContext context) {
     pages = [
-      HomePagev2(setPageIndex),
-      WeddingsPage(setPageIndex),
-      BirthdaysPage(setPageIndex),
-      OthersPage(setPageIndex),
+      // HomePagev2(setPageIndex),
+      // WeddingsPage(setPageIndex),
+      // BirthdaysPage(setPageIndex),
+      // OthersPage(setPageIndex),
     ];
 
     // final isLargeScreen =
@@ -98,7 +98,7 @@ class _rootPageState extends State<rootPage> {
         showDrawerOpener: true,
         drawerOpenerTopMargin: 0.8,
         //  animatedHeader: drawerHeader,
-        child: pages[currentPage],
+        child: HomePagev2(),
         //   headerHeight: 20,
       ),
     );
