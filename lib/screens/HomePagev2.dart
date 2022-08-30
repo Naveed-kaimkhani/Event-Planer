@@ -64,7 +64,7 @@ class _HomePagev2State extends State<HomePagev2> {
     List<Event> _eventList = Event.eventList;
 
     //Plants category
-    List<String> _eventTypes = ['All', 'Weddings', 'Birthdays', 'Others'];
+    // List<String> _eventTypes = ['All', 'Weddings', 'Birthdays', 'Others'];
     //Toggle Favorite button
     bool toggleIsFavorated(bool isFavorited) {
       return !isFavorited;
@@ -110,335 +110,315 @@ class _HomePagev2State extends State<HomePagev2> {
                 ),
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              height: 50,
-              child:
-                  // Expanded(
-                  //   child: Padding(
-                  //     padding: EdgeInsets.symmetric(horizontal: 2),
-                  //     child: GridView.builder(
-                  //       scrollDirection: Axis.horizontal,
-                  //       itemCount: demoallImages.length,
-                  //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  //         crossAxisCount: 1,
-                  //         mainAxisExtent: 500,
-                  //         crossAxisSpacing: 2,
-                  //         childAspectRatio: 1.65,
-                  //       ),
-                  //       itemBuilder: ((context, index) => Image.asset(
-                  //             demoallImages[index],
-                  //             fit: BoxFit.fill,
-                  //           )),
-                  //     ),
-                  //   ),
-                  // ),
-                  ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: _eventTypes.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: InkWell(
-                            onTap: () {
-                              if (_eventTypes[index] == _eventTypes[0]) {
-                                this.widget.setPageIndex!(0);
-                              }
-                              if (_eventTypes[index] == _eventTypes[1]) {
-                                this.widget.setPageIndex!(1);
-                              }
-                              if (_eventTypes[index] == _eventTypes[2]) {
-                                this.widget.setPageIndex!(2);
-                              }
-                              if (_eventTypes[index] == _eventTypes[3]) {
-                                this.widget.setPageIndex!(3);
-                              }
-                            },
-                            child: Text(
-                              _eventTypes[index],
-                              style: TextStyle(
-                                  wordSpacing: 50,
-                                  fontSize: 22.0,
-                                  // fontWeight: selectedIndex == index
-                                  //     ? FontWeight.bold
-                                  //     : FontWeight.bold,
-                                  color: selectedIndex == index
-                                      ? Colors.white
-                                      : Colors.white),
-                            ),
-                          ),
-                        );
-                      }),
-            ),
+            // Container(
+            //   margin: EdgeInsets.only(top: 10),
+            //   height: 50,
+            //   child: ListView.builder(
+            //       scrollDirection: Axis.horizontal,
+            //       itemCount: _eventTypes.length,
+            //       itemBuilder: (BuildContext context, int index) {
+            //         return Padding(
+            //           padding: const EdgeInsets.all(8.0),
+            //           child: InkWell(
+            //             onTap: () {
+            //               if (_eventTypes[index] == _eventTypes[0]) {
+            //                 this.widget.setPageIndex!(0);
+            //               }
+            //               if (_eventTypes[index] == _eventTypes[1]) {
+            //                 this.widget.setPageIndex!(1);
+            //               }
+            //               if (_eventTypes[index] == _eventTypes[2]) {
+            //                 this.widget.setPageIndex!(2);
+            //               }
+            //               if (_eventTypes[index] == _eventTypes[3]) {
+            //                 this.widget.setPageIndex!(3);
+            //               }
+            //             },
+            //             child: Text(
+            //               _eventTypes[index],
+            //               style: TextStyle(
+            //                   wordSpacing: 50,
+            //                   fontSize: 22.0,
+            //                   // fontWeight: selectedIndex == index
+            //                   //     ? FontWeight.bold
+            //                   //     : FontWeight.bold,
+            //                   color: selectedIndex == index
+            //                       ? Colors.white
+            //                       : Colors.white),
+            //             ),
+            //           ),
+            //         );
+            //       }),
+            //  ),
           ]),
         ),
         SizedBox(
           height: 25,
         ),
-        Container(
-          child: Row(children: [
-            Text(
-              "  Top Designs",
-              style: TextStyle(
-                  color: Constants.primaryColor,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500),
-            ),
-          ]),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        Container(
-          height: 340,
-          child: GridView(
-            scrollDirection: Axis.horizontal,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1, mainAxisSpacing: 10.0),
-            children: <Widget>[
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs",
-                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
-                  Image(image: AssetImage("assets/account.png")),
-                  "Username"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs",
-                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
-                  Image(image: AssetImage("assets/account.png")),
-                  "Username"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs",
-                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
-                  Image(image: AssetImage("assets/account.png")),
-                  "Username"),
-            ],
-          ),
-        ),
-        Container(
-          child: Row(children: [
-            Text(
-              "  Top Wedding picks",
-              style: TextStyle(
-                  color: Constants.primaryColor,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500),
-            ),
-          ]),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        Container(
-          height: 340,
-          child: GridView(
-            scrollDirection: Axis.horizontal,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1, mainAxisSpacing: 10.0),
-            children: <Widget>[
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/wed2.jpg")),
-                  Image(image: AssetImage("assets/wedd.jpg")),
-                  Image(image: AssetImage("assets/wedd3.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs",
-                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
-                  Image(image: AssetImage("assets/account.png")),
-                  "Username"),
-              // allImagesContainer(
-              //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs",
-                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
-                  Image(image: AssetImage("assets/account.png")),
-                  "Username"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs",
-                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
-                  Image(image: AssetImage("assets/account.png")),
-                  "Username"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs",
-                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
-                  Image(image: AssetImage("assets/account.png")),
-                  "Username"),
-            ],
-          ),
-        ),
-        Container(
-          child: Row(children: [
-            Text(
-              "  Top Birthday Picks",
-              style: TextStyle(
-                  color: Constants.primaryColor,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500),
-            ),
-          ]),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        Container(
-          height: 340,
-          child: GridView(
-            scrollDirection: Axis.horizontal,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1, mainAxisSpacing: 10.0),
-            children: <Widget>[
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs",
-                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
-                  Image(image: AssetImage("assets/account.png")),
-                  "Username"),
-              // allImagesContainer(
-              //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs",
-                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
-                  Image(image: AssetImage("assets/account.png")),
-                  "Username"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs",
-                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
-                  Image(image: AssetImage("assets/account.png")),
-                  "Username"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs",
-                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
-                  Image(image: AssetImage("assets/account.png")),
-                  "Username"),
-            ],
-          ),
-        ),
-        Container(
-          child: Row(children: [
-            Text(
-              "  Others",
-              style: TextStyle(
-                  color: Constants.primaryColor,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500),
-            ),
-          ]),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        Container(
-          height: 340,
-          child: GridView(
-            scrollDirection: Axis.horizontal,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1, mainAxisSpacing: 10.0),
-            children: <Widget>[
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/b5 (copy).jpg")),
-                  Image(image: AssetImage("assets/b6.jpg")),
-                  Image(image: AssetImage("assets/Ce.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs",
-                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
-                  Image(image: AssetImage("assets/account.png")),
-                  "Username"),
-              // allImagesContainer(
-              //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/bride.jpg")),
-                  Image(image: AssetImage("assets/bridalshower3.jpg")),
-                  Image(image: AssetImage("assets/bri.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs",
-                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
-                  Image(image: AssetImage("assets/account.png")),
-                  "Username"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/wed2.jpg")),
-                  Image(image: AssetImage("assets/wedd.jpg")),
-                  Image(image: AssetImage("assets/wedd3.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs",
-                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
-                  Image(image: AssetImage("assets/account.png")),
-                  "Username"),
-              allImagesContainer(
-                  context,
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  Image(image: AssetImage("assets/w4.jpg")),
-                  "Blue themed birhday party",
-                  "package:4000Rs",
-                  "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
-                  Image(image: AssetImage("assets/account.png")),
-                  "Username"),
-            ],
-          ),
-        ),
         // Container(
-        //   height: 100,
-        //   width: 500,
-        //   decoration: BoxDecoration(color: Constants.primaryColor),
         //   child: Row(children: [
-        //     Text("",
-        //         style: TextStyle(
-        //             color: Constants.primaryColor,
-        //             fontSize: 22,
-        //             fontWeight: FontWeight.w500))
+        //     Text(
+        //       "  Top Desi",
+        //       style: TextStyle(
+        //           color: Constants.primaryColor,
+        //           fontSize: 22,
+        //           fontWeight: FontWeight.w500),
+        //     ),
         //   ]),
         // ),
+        // SizedBox(
+        //   height: 15,
+        // ),
+        // Container(
+        //   height: 340,
+        //   child: GridView(
+        //     scrollDirection: Axis.horizontal,
+        //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        //         crossAxisCount: 1, mainAxisSpacing: 10.0),
+        //     children: <Widget>[
+        //       allImagesContainer(
+        //           context,
+        //           Image(image: AssetImage("assets/b.jpg")),
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           "Blue themed birhday party",
+        //           "package:4000Rs",
+        //           "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+        //           Image(image: AssetImage("assets/account.png")),
+        //           "Username"),
+        //       allImagesContainer(
+        //           context,
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           "Blue themed birhday party",
+        //           "package:4000Rs",
+        //           "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+        //           Image(image: AssetImage("assets/account.png")),
+        //           "Username"),
+        //       allImagesContainer(
+        //           context,
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           "Blue themed birhday party",
+        //           "package:4000Rs",
+        //           "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+        //           Image(image: AssetImage("assets/account.png")),
+        //           "Username"),
+        //     ],
+        //   ),
+        // ),
+        // Container(
+        //   child: Row(children: [
+        //     Text(
+        //       "  Top Wedding picks",
+        //       style: TextStyle(
+        //           color: Constants.primaryColor,
+        //           fontSize: 22,
+        //           fontWeight: FontWeight.w500),
+        //     ),
+        //   ]),
+        // ),
+        // SizedBox(
+        //   height: 15,
+        // ),
+        // Container(
+        //   height: 340,
+        //   child: GridView(
+        //     scrollDirection: Axis.horizontal,
+        //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        //         crossAxisCount: 1, mainAxisSpacing: 10.0),
+        //     children: <Widget>[
+        //       allImagesContainer(
+        //           context,
+        //           Image(image: AssetImage("assets/wed2.jpg")),
+        //           Image(image: AssetImage("assets/wedd.jpg")),
+        //           Image(image: AssetImage("assets/wedd3.jpg")),
+        //           "Blue themed birhday party",
+        //           "package:4000Rs",
+        //           "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+        //           Image(image: AssetImage("assets/account.png")),
+        //           "Username"),
+        //       // allImagesContainer(
+        //       //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
+        //       allImagesContainer(
+        //           context,
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           "Blue themed birhday party",
+        //           "package:4000Rs",
+        //           "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+        //           Image(image: AssetImage("assets/account.png")),
+        //           "Username"),
+        //       allImagesContainer(
+        //           context,
+        //           Image(image: AssetImage("assets/w3.jpg")),
+        //           Image(image: AssetImage("assets/w3.jpg")),
+        //           Image(image: AssetImage("assets/w3.jpg")),
+        //           "Blue themed birhday party",
+        //           "package:4000Rs",
+        //           "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+        //           Image(image: AssetImage("assets/account.png")),
+        //           "Username"),
+        //       allImagesContainer(
+        //           context,
+        //           Image(image: AssetImage("assets/w1.jpeg")),
+        //           Image(image: AssetImage("assets/w1.jpeg")),
+        //           Image(image: AssetImage("assets/w1.jpeg")),
+        //           "Blue themed birhday party",
+        //           "package:4000Rs",
+        //           "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+        //           Image(image: AssetImage("assets/account.png")),
+        //           "Username"),
+        //     ],
+        //   ),
+        // ),
+        // Container(
+        //   child: Row(children: [
+        //     Text(
+        //       "  Top Birthday Picks",
+        //       style: TextStyle(
+        //           color: Constants.primaryColor,
+        //           fontSize: 22,
+        //           fontWeight: FontWeight.w500),
+        //     ),
+        //   ]),
+        // ),
+        // SizedBox(
+        //   height: 15,
+        // ),
+        // Container(
+        //   height: 340,
+        //   child: GridView(
+        //     scrollDirection: Axis.horizontal,
+        //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        //         crossAxisCount: 1, mainAxisSpacing: 10.0),
+        //     children: <Widget>[
+        //       allImagesContainer(
+        //           context,
+        //           Image(image: AssetImage("assets/b5 (copy).jpg")),
+        //           Image(image: AssetImage("assets/b6.jpg")),
+        //           Image(image: AssetImage("assets/Ce.jpg")),
+        //           "Blue themed birhday party",
+        //           "package:4000Rs",
+        //           "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+        //           Image(image: AssetImage("assets/account.png")),
+        //           "Username"),
+        //       // allImagesContainer(
+        //       //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
+        //       allImagesContainer(
+        //           context,
+        //           Image(image: AssetImage("assets/birthday2.jpg")),
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           "Blue themed birhday party",
+        //           "package:4000Rs",
+        //           "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+        //           Image(image: AssetImage("assets/account.png")),
+        //           "Username"),
+        //       allImagesContainer(
+        //           context,
+        //           Image(image: AssetImage("assets/birthf.jpg")),
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           "Blue themed birhday party",
+        //           "package:4000Rs",
+        //           "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+        //           Image(image: AssetImage("assets/account.png")),
+        //           "Username"),
+        //       allImagesContainer(
+        //           context,
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           "Blue themed birhday party",
+        //           "package:4000Rs",
+        //           "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+        //           Image(image: AssetImage("assets/account.png")),
+        //           "Username"),
+        //     ],
+        //   ),
+        // ),
+        // Container(
+        //   child: Row(children: [
+        //     Text(
+        //       "  Others",
+        //       style: TextStyle(
+        //           color: Constants.primaryColor,
+        //           fontSize: 22,
+        //           fontWeight: FontWeight.w500),
+        //     ),
+        //   ]),
+        // ),
+        // SizedBox(
+        //   height: 15,
+        // ),
+        // Container(
+        //   height: 340,
+        //   child: GridView(
+        //     scrollDirection: Axis.horizontal,
+        //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        //         crossAxisCount: 1, mainAxisSpacing: 10.0),
+        //     children: <Widget>[
+        //       allImagesContainer(
+        //           context,
+        //           Image(image: AssetImage("assets/anniversary.jpg")),
+        //           Image(image: AssetImage("assets/b6.jpg")),
+        //           Image(image: AssetImage("assets/Ce.jpg")),
+        //           "Blue themed birhday party",
+        //           "package:4000Rs",
+        //           "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+        //           Image(image: AssetImage("assets/account.png")),
+        //           "Username"),
+        //       // allImagesContainer(
+        //       //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
+        //       allImagesContainer(
+        //           context,
+        //           Image(image: AssetImage("assets/bride.jpg")),
+        //           Image(image: AssetImage("assets/bridalshower3.jpg")),
+        //           Image(image: AssetImage("assets/bri.jpg")),
+        //           "Blue themed birhday party",
+        //           "package:4000Rs",
+        //           "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+        //           Image(image: AssetImage("assets/account.png")),
+        //           "Username"),
+        //       allImagesContainer(
+        //           context,
+        //           Image(image: AssetImage("assets/wed2.jpg")),
+        //           Image(image: AssetImage("assets/wedd.jpg")),
+        //           Image(image: AssetImage("assets/wedd3.jpg")),
+        //           "Blue themed birhday party",
+        //           "package:4000Rs",
+        //           "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+        //           Image(image: AssetImage("assets/account.png")),
+        //           "Username"),
+        //       allImagesContainer(
+        //           context,
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           Image(image: AssetImage("assets/w4.jpg")),
+        //           "Blue themed birhday party",
+        //           "package:4000Rs",
+        //           "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+        //           Image(image: AssetImage("assets/account.png")),
+        //           "Username"),
+        //     ],
+        //   ),
+        // ),
+        // // Container(
+        // //   height: 100,
+        // //   width: 500,
+        // //   decoration: BoxDecoration(color: Constants.primaryColor),
+        // //   child: Row(children: [
+        // //     Text("",
+        // //         style: TextStyle(
+        // //             color: Constants.primaryColor,
+        // //             fontSize: 22,
+        // //             fontWeight: FontWeight.w500))
+        // //   ]),
+        // // ),
       ]),
     ));
   }
