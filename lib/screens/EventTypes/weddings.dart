@@ -2,6 +2,7 @@ import 'package:eventplaner/main.dart';
 import 'package:eventplaner/rootwidget.dart';
 import 'package:eventplaner/widgets/Containerwidgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../Model/eventModelV2.dart';
@@ -40,10 +41,15 @@ class _WeddingsPageState extends State<WeddingsPage> {
           child: Column(children: [
             Container(
               width: 500,
-              child: Text(
-                "       Weddings",
-                style: TextStyle(color: Constants.primaryColor, fontSize: 50),
-              ),
+              child: Text("       Weddings",
+                  style: GoogleFonts.pacifico(
+                    textStyle: const TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 50,
+                      letterSpacing: 1.05,
+                      color: Color(0xff741b47),
+                    ),
+                  )),
             ),
             // Container(
             //   height: 100,
@@ -128,13 +134,15 @@ class _WeddingsPageState extends State<WeddingsPage> {
             ),
             Container(
               child: Row(children: [
-                Text(
-                  "  Exclusives",
-                  style: TextStyle(
-                      color: Constants.primaryColor,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w500),
-                ),
+                Text("  Exclusives",
+                    style: GoogleFonts.pacifico(
+                      textStyle: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 40,
+                        letterSpacing: 1.05,
+                        color: Color(0xff741b47),
+                      ),
+                    )),
               ]),
             ),
             SizedBox(
@@ -260,13 +268,15 @@ class _WeddingsPageState extends State<WeddingsPage> {
             //),
             Container(
               child: Row(children: [
-                Text(
-                  "  All Desgins",
-                  style: TextStyle(
-                      color: Constants.primaryColor,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w500),
-                ),
+                Text("  All Desgins",
+                    style: GoogleFonts.pacifico(
+                      textStyle: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 40,
+                        letterSpacing: 1.05,
+                        color: Color(0xff741b47),
+                      ),
+                    )),
               ]),
             ),
             SizedBox(
@@ -275,13 +285,13 @@ class _WeddingsPageState extends State<WeddingsPage> {
             Container(
               height: 340,
               child: GridView(
-                scrollDirection: Axis.horizontal,
+                scrollDirection: Axis.vertical,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 1, mainAxisSpacing: 10.0),
                 children: <Widget>[
                   allImagesContainer(
                       context,
-                      Image(image: AssetImage("assets/birthdayfinal4.jpg")),
+                      Image(image: AssetImage("assets/wed2.jpg")),
                       Image(image: AssetImage("assets/birthdayfinal4.1.jpg")),
                       Image(image: AssetImage("assets/birthfayfinalj.jpg")),
                       "Blue themed birhday party",
@@ -293,17 +303,7 @@ class _WeddingsPageState extends State<WeddingsPage> {
                   //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
                   allImagesContainer(
                       context,
-                      Image(image: AssetImage("assets/birtdhayfinal3.jpg")),
                       Image(image: AssetImage("assets/w4.jpg")),
-                      Image(image: AssetImage("assets/w4.jpg")),
-                      "Blue themed birhday party",
-                      "package:4000Rs",
-                      "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
-                      Image(image: AssetImage("assets/account.png")),
-                      "Username"),
-                  allImagesContainer(
-                      context,
-                      Image(image: AssetImage("assets/birthdayfinal4.jpg")),
                       Image(image: AssetImage("assets/w4.jpg")),
                       Image(image: AssetImage("assets/w4.jpg")),
                       "Blue themed birhday party",
@@ -313,7 +313,17 @@ class _WeddingsPageState extends State<WeddingsPage> {
                       "Username"),
                   allImagesContainer(
                       context,
-                      Image(image: AssetImage("assets/birthdayfinal5.jpg")),
+                      Image(image: AssetImage("assets/w3.jpg")),
+                      Image(image: AssetImage("assets/w4.jpg")),
+                      Image(image: AssetImage("assets/w4.jpg")),
+                      "Blue themed birhday party",
+                      "package:4000Rs",
+                      "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                      Image(image: AssetImage("assets/account.png")),
+                      "Username"),
+                  allImagesContainer(
+                      context,
+                      Image(image: AssetImage("assets/ww.jpg")),
                       Image(image: AssetImage("assets/w4.jpg")),
                       Image(image: AssetImage("assets/w4.jpg")),
                       "Blue themed birhday party",

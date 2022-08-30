@@ -2,10 +2,12 @@ import 'package:eventplaner/constant/constants.dart';
 import 'package:eventplaner/widgets/customizedappBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../Model/eventModelV2.dart';
 import '../screens/detailsPageV2.dart';
+import '../screens/userProfile.dart';
 
 Widget Imagecontainer(
   BuildContext context,
@@ -186,37 +188,79 @@ _showPreview(BuildContext context, String title, Image image, Image image2,
       return AlertDialog(
         title: Text(
           title,
+          style: GoogleFonts.lato(
+            textStyle: const TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 20,
+              letterSpacing: 1.05,
+              color: Color(0xff741b47),
+            ),
+          ),
         ),
         content: Container(
-          height: double.infinity,
+          height: 800,
           width: double.infinity,
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Container(height: 30, width: 30, child: profileimage),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text(name),
-                ],
-              ),
-              Container(
-                height: 300,
-                width: 250,
-                child: GridView(
-                  children: [image, image2, image3],
-                  scrollDirection: Axis.horizontal,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 1, mainAxisSpacing: 10.0),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => UserProfile()));
+                        },
+                        child: Container(
+                            height: 30, width: 30, child: profileimage)),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(name),
+                  ],
                 ),
-              ),
-              Text(
-                "Description",
-                style: TextStyle(fontSize: 20),
-              ),
-              Text(description),
-            ],
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 300,
+                  width: 250,
+                  child: GridView(
+                    children: [image, image2, image3],
+                    scrollDirection: Axis.horizontal,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 1, mainAxisSpacing: 10.0),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Description",
+                  style: GoogleFonts.lato(
+                    textStyle: const TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 20,
+                      letterSpacing: 1.05,
+                      color: Color(0xff741b47),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  description,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15,
+                    letterSpacing: 1.05,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         actions: <Widget>[

@@ -5,6 +5,7 @@ import 'package:eventplaner/screens/EventTypes/weddings.dart';
 import 'package:eventplaner/widgets/Containerwidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
@@ -115,27 +116,40 @@ class _HomePagev2State extends State<HomePagev2> {
           height: 10,
         ),
         Container(
-          child: Text(
-            "Categories",
-            style: TextStyle(
-              color: Constants.primaryColor,
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Pacifico',
-              // fontStyle: FontStyle.italic
-            ),
-          ),
+          child: Text("Categories",
+              style: GoogleFonts.pacifico(
+                textStyle: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 50,
+                  letterSpacing: 1.05,
+                  color: Color(0xff741b47),
+                ),
+              )
+              // style: GoogleFonts.lato(
+              //   textStyle: const TextStyle(
+              //     fontWeight: FontWeight.w700,
+              //     fontSize: 23,
+              //     letterSpacing: 1.05,
+              //     color: Color(0xFF512D8F),
+              //   ),
+              // ),
+              ),
         ),
         SizedBox(
-          height: 20,
+          height: 30,
         ),
         Container(
           child: Column(
             children: <Widget>[
-              Text(
-                "Birthdays",
-                style: TextStyle(color: Constants.primaryColor, fontSize: 28),
-              ),
+              Text("Birthdays",
+                  style: GoogleFonts.pacifico(
+                    textStyle: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 30,
+                      letterSpacing: 1.05,
+                      color: Color(0xff741b47),
+                    ),
+                  )),
               Card(
                 child: InkWell(
                   onTap: () {
@@ -183,10 +197,15 @@ class _HomePagev2State extends State<HomePagev2> {
                   ),
                 ),
               ),
-              Text(
-                "Weddings",
-                style: TextStyle(color: Constants.primaryColor, fontSize: 28),
-              ),
+              Text("Weddings",
+                  style: GoogleFonts.pacifico(
+                    textStyle: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 30,
+                      letterSpacing: 1.05,
+                      color: Color(0xff741b47),
+                    ),
+                  )),
               Card(
                 child: InkWell(
                   onTap: () {
@@ -234,10 +253,15 @@ class _HomePagev2State extends State<HomePagev2> {
                   ),
                 ),
               ),
-              Text(
-                "Bridal Shower",
-                style: TextStyle(color: Constants.primaryColor, fontSize: 28),
-              ),
+              Text("Bridal Shower",
+                  style: GoogleFonts.pacifico(
+                    textStyle: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 30,
+                      letterSpacing: 1.05,
+                      color: Color(0xff741b47),
+                    ),
+                  )),
               Card(
                 child: Container(
                   padding: EdgeInsets.all(10),
@@ -277,10 +301,15 @@ class _HomePagev2State extends State<HomePagev2> {
                   width: 500,
                 ),
               ),
-              Text(
-                "Baby Shower",
-                style: TextStyle(color: Constants.primaryColor, fontSize: 28),
-              ),
+              Text("Baby Shower",
+                  style: GoogleFonts.pacifico(
+                    textStyle: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 30,
+                      letterSpacing: 1.05,
+                      color: Color(0xff741b47),
+                    ),
+                  )),
               Card(
                 child: Container(
                   padding: EdgeInsets.all(10),

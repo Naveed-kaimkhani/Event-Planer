@@ -82,9 +82,7 @@ class _UserProfileState extends State<UserProfile> {
                   padding: const EdgeInsets.only(top: 60.0),
                   child: Center(
                     child: CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          // userdetails!.profile!,
-                          "https://tse1.mm.bing.net/th?id=OIP.hyGrHDOTcSNVlD8XuugwUAHaHn&pid=Api&P=0"),
+                      backgroundImage: AssetImage("assets/anousha.jpeg"),
                       radius: 70,
                     ), //CircleAvatar
                   ),
@@ -94,7 +92,7 @@ class _UserProfileState extends State<UserProfile> {
             Padding(
               padding: const EdgeInsets.only(left: 130.0),
               child: Text(
-                "Feroz khan",
+                "Syeda Anousha",
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ),
@@ -115,7 +113,7 @@ class _UserProfileState extends State<UserProfile> {
                 height: size.height / 7,
                 width: size.width,
                 child: Text(
-                  "About Feroz About Feroz About Feroz About Feroz About Feroz About Feroz About FerozAbout Feroz About Feroz About Feroz About Feroz About Feroz About Feroz ",
+                  "Syeda Anousha Syeda Anousha Syeda Anousha Syeda Anousha FerozSyeda Anousha Syeda AnoushaSyeda AnoushaSyeda AnoushaSyeda AnoushaSyeda AnoushaSyeda AnoushaSyeda Anousha",
                   maxLines: 6,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -138,7 +136,53 @@ class _UserProfileState extends State<UserProfile> {
                 height: size.height / 7,
                 width: size.width,
                 child: Text(
-                  "About Feroz About Feroz About Feroz About Feroz About Feroz About Feroz About FerozAbout Feroz About Feroz About Feroz About Feroz About Feroz About Feroz ",
+                  "Syeda Anousha Syeda Anousha Syeda Anousha Syeda Anousha FerozSyeda Anousha Syeda AnoushaSyeda AnoushaSyeda AnoushaSyeda AnoushaSyeda AnoushaSyeda AnoushaSyeda Anousha",
+                  maxLines: 6,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0, left: 8.0),
+              child: Text(
+                "Email",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 6.0, left: 8.0, right: 5.0),
+              child: Container(
+                // color: Colors.black,
+                height: size.height / 7,
+                width: size.width,
+                child: Text(
+                  "anoushazaidi432@gmail.com",
+                  //maxLines: 6,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 2.0, left: 8.0),
+              child: Text(
+                "Phone:",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 6.0, left: 8.0, right: 5.0),
+              child: Container(
+                // color: Colors.black,
+                height: size.height / 7,
+                width: size.width,
+                child: Text(
+                  "03103869050",
                   maxLines: 6,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -198,7 +242,7 @@ class _UserProfileState extends State<UserProfile> {
             //       Image(image: AssetImage("assets/w4.jpg")),
             //       "Blue themed birhday party",
             //       "package:4000Rs",   "This event is xys",),
-           
+
             //       ],
             //     ),
             //   ),
