@@ -4,6 +4,7 @@ import 'package:eventplaner/screens/EventTypes/weddings.dart';
 import 'package:eventplaner/screens/HomePagev2.dart';
 import 'package:eventplaner/screens/UploadEvent.dart';
 import 'package:eventplaner/screens/userProfile.dart';
+import 'package:eventplaner/screens/welcomePage.dart';
 import 'package:eventplaner/widgets/customizedappBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_drawers/flutter_drawers.dart';

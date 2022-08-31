@@ -161,7 +161,7 @@ class _BirthdaysPageState extends State<BirthdaysPage> {
                       Image(image: AssetImage("assets/w4.jpg")),
                       "Micky Mouse themed Birthday Party",
                       "package:40,000 Rs only",
-                      "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys,This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
+                      "This is micky mouse themed birthday party. Organized for first birthday",
                       Image(image: AssetImage("assets/anousha.jpeg")),
                       "Syeda Anousha"),
                   // allImagesContainer(
@@ -267,7 +267,7 @@ class _BirthdaysPageState extends State<BirthdaysPage> {
             // ),
             Container(
               child: Row(children: [
-                Text("  All Desgins",
+                Text("  All Designs",
                     style: GoogleFonts.pacifico(
                       textStyle: const TextStyle(
                         fontWeight: FontWeight.w500,

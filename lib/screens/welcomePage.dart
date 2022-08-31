@@ -20,14 +20,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.purple,
+        backgroundColor: Color(0xff741b47),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20, top: 20),
             child: InkWell(
               onTap: () {
                 Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (_) =>  SignIn()));
+                    context, MaterialPageRoute(builder: (_) => SignIn()));
               }, //to login screen. We will update later
               child: const Text(
                 'Skip',
@@ -53,17 +53,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             controller: _pageController,
             children: [
               createPage(
-                image: 'assets/th.jpeg',
+                image: 'assets/wed2.jpg',
                 title: Constants.titleOne,
                 description: Constants.descriptionOne,
               ),
               createPage(
-                image: 'assets/th1.jpeg',
+                image: 'assets/bride3.jpg',
                 title: Constants.titleTwo,
                 description: Constants.descriptionTwo,
               ),
               createPage(
-                image: 'assets/th2.jpeg',
+                image: 'assets/ww.jpg',
                 title: Constants.titleThree,
                 description: Constants.descriptionThree,
               ),

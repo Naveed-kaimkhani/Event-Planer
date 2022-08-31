@@ -5,7 +5,6 @@ import 'package:page_transition/page_transition.dart';
 import '../constant/TextField.dart';
 import '../constant/constants.dart';
 
-
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({Key? key}) : super(key: key);
 
@@ -21,9 +20,14 @@ class ForgotPassword extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Container(
+                  height: 300,
+                  width: 400,
+                  child: Image.asset('assets/rfogot.png')),
               const Text(
                 'Forgot\nPassword',
                 style: TextStyle(
+                  color: Color(0xff741b47),
                   fontSize: 35.0,
                   fontWeight: FontWeight.w700,
                 ),
@@ -36,6 +40,14 @@ class ForgotPassword extends StatelessWidget {
                 hintText: 'Enter Email',
                 icon: Icons.alternate_email,
               ),
+              const CustomTextfield(
+                obscureText: false,
+                hintText: 'Enter new password',
+                icon: Icons.password,
+              ),
+              const SizedBox(
+                height: 30,
+              ),
               GestureDetector(
                 onTap: () {},
                 child: Container(
@@ -45,7 +57,7 @@ class ForgotPassword extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                   child: const Center(
                     child: Text(
                       'Reset Password',
@@ -65,7 +77,7 @@ class ForgotPassword extends StatelessWidget {
                   Navigator.pushReplacement(
                       context,
                       PageTransition(
-                          child:  SignIn(),
+                          child: SignIn(),
                           type: PageTransitionType.bottomToTop));
                 },
                 child: Center(

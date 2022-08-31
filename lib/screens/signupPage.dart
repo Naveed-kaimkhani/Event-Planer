@@ -21,6 +21,14 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  String sPassword = "";
+  String sEmail = "";
+  bool showPassword = false;
+  bool showConfirmPassword = false;
+  void togglePasswordVisibility() {
+    setState(() => showPassword = !showPassword);
+  }
+
   TextEditingController eController = TextEditingController();
 
   TextEditingController LastController = TextEditingController();
@@ -145,10 +153,43 @@ class _SignUpState extends State<SignUp> {
                   controller: PhoneController,
                   field_icon: Icons.password),
               k,
-              inputfields(
-                  hint_text: "Enter Password",
-                  controller: PassController,
-                  field_icon: Icons.password),
+              Container(
+                padding: EdgeInsets.only(left: 5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Color(0x26741b47),
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: "Password",
+                    prefixIcon: Icon(
+                      Icons.password_rounded,
+                      color: const Color.fromARGB(255, 168, 62, 13),
+                    ),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        togglePasswordVisibility();
+                      },
+                      tooltip: "Add password",
+                      color: const Color.fromARGB(255, 168, 62, 13),
+                      icon: (showPassword
+                          ? Icon(Icons.visibility_rounded)
+                          : Icon(
+                              Icons.visibility_off_rounded,
+                            )),
+                    ),
+                  ),
+                  obscureText: !showPassword,
+                  // validator: (val) {
+                  //   return validateField(val!);
+                  // },
+                  onChanged: (val) {
+                    setState(() {
+                      sPassword = val;
+                    });
+                  },
+                ),
+              ),
               k,
               GestureDetector(
                 onTap: () async {

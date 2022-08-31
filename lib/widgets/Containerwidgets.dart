@@ -213,11 +213,21 @@ _showPreview(BuildContext context, String title, Image image, Image image2,
                                   builder: (context) => UserProfile()));
                         },
                         child: Container(
-                            height: 30, width: 30, child: profileimage)),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(70)),
+                            height: 35,
+                            width: 35,
+                            child: profileimage)),
                     SizedBox(
                       width: 10,
                     ),
-                    Text(name),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15.0),
+                      child: Text(
+                        name,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -250,15 +260,15 @@ _showPreview(BuildContext context, String title, Image image, Image image2,
                 SizedBox(
                   height: 10,
                 ),
-                Text(
-                  description,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 15,
-                    letterSpacing: 1.05,
-                    color: Colors.black,
-                  ),
-                ),
+                Text(description,
+                    style: GoogleFonts.lato(
+                      textStyle: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 15,
+                        letterSpacing: 2.05,
+                        color: Colors.black,
+                      ),
+                    )),
               ],
             ),
           ),

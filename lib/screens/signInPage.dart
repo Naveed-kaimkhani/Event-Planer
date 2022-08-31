@@ -4,6 +4,7 @@ import 'package:eventplaner/screens/EventTypes/weddings.dart';
 import 'package:eventplaner/screens/signupPage.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
@@ -25,6 +26,13 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   TextEditingController eController = TextEditingController();
+  String sPassword = "";
+  String sEmail = "";
+  bool showPassword = false;
+  bool showConfirmPassword = false;
+  void togglePasswordVisibility() {
+    setState(() => showPassword = !showPassword);
+  }
 
   TextEditingController pController = TextEditingController();
 
@@ -55,23 +63,84 @@ class _SignInState extends State<SignIn> {
               const SizedBox(
                 height: 30,
               ),
-              Center(
-                child: inputfields(
-                  hint_text: "Enter Email",
-                  controller: eController,
-                  field_icon: Icons.email_outlined,
+              Container(
+                padding: const EdgeInsets.only(left: 5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Color(0x26741b47),
+                ),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: "Email address",
+                    prefixIcon: Icon(
+                      Icons.email_rounded,
+                      color: Color(0xff741b47),
+                    ),
+                  ),
+                  // validator: (val) {
+                  //   return validateEmail(val!.trim());
+                  // },
+                  onChanged: (val) {
+                    setState(() {
+                      sEmail = val.trim();
+                    });
+                  },
                 ),
               ),
+              // Center(
+              //   child: inputfields(
+              //     hint_text: "Enter Email",
+              //     controller: eController,
+              //     field_icon: Icons.email_outlined,
+              //   ),
+              // ),
               const SizedBox(
                 height: 10,
               ),
-              Center(
-                child: inputfields(
-                  hint_text: "Enter Password",
-                  controller: pController,
-                  field_icon: Icons.password_outlined,
+              Container(
+                padding: EdgeInsets.only(left: 5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Color(0x26741b47),
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: "Password",
+                    prefixIcon: Icon(
+                      Icons.password_rounded,
+                      color: Color(0xff741b47),
+                    ),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        togglePasswordVisibility();
+                      },
+                      tooltip: "Add password",
+                      color: const Color.fromARGB(255, 168, 62, 13),
+                      icon: (showPassword
+                          ? Icon(Icons.visibility_rounded)
+                          : Icon(
+                              Icons.visibility_off_rounded,
+                            )),
+                    ),
+                  ),
+                  obscureText: !showPassword,
+                  // validator: (val) {
+                  //   return validateField(val!);
+                  // },
+                  onChanged: (val) {
+                    setState(() {
+                      sPassword = val;
+                    });
+                  },
                 ),
               ),
+              // Center(
+              //   child: inputfields(
+              //     hint_text: "Enter Password",
+              //     controller: pController,
+              //     field_icon: Icons.password_outlined,
+              //   ),
+              // ),
               const SizedBox(
                 height: 10,
               ),
@@ -308,11 +377,14 @@ class _SignInState extends State<SignIn> {
                       height: 30,
                       child: Image.asset('assets/google.png'),
                     ),
-                    Text(
-                      'Sign In with Google',
-                      style: TextStyle(
-                        color: Constants.blackColor,
-                        fontSize: 18.0,
+                    InkWell(
+                      onTap: () => authentication_methods.signInWithGoogle(),
+                      child: Text(
+                        'Sign In with Google',
+                        style: TextStyle(
+                          color: Constants.blackColor,
+                          fontSize: 18.0,
+                        ),
                       ),
                     ),
                   ],

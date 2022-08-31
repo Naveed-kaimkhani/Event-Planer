@@ -85,9 +85,12 @@ class _HomePagev2State extends State<HomePagev2> {
                   // crossAxisAlignment: CrossAxisAlignment.start,
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(
-                      Icons.search,
-                      color: Colors.black.withOpacity(.6),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(
+                        Icons.search,
+                        color: Colors.black.withOpacity(.6),
+                      ),
                     ),
                     const Expanded(
                         child: TextField(
@@ -98,9 +101,12 @@ class _HomePagev2State extends State<HomePagev2> {
                         focusedBorder: InputBorder.none,
                       ),
                     )),
-                    Icon(
-                      Icons.mic,
-                      color: Colors.black.withOpacity(.6),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(
+                        Icons.mic,
+                        color: Colors.black.withOpacity(.6),
+                      ),
                     ),
                   ],
                 ),

@@ -5,6 +5,8 @@ import 'package:eventplaner/screens/UploadEvent.dart';
 
 import 'package:eventplaner/screens/signInPage.dart';
 import 'package:eventplaner/screens/signupPage.dart';
+import 'package:eventplaner/screens/splashscreen.dart';
+import 'package:eventplaner/screens/welcomePage.dart';
 import 'package:eventplaner/services/Firestore_method.dart';
 import 'package:eventplaner/services/authentication_methods.dart';
 import 'package:eventplaner/widgets/customizedappBar.dart';
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         //      home: SignUpPage(),
 
-        home: SignIn(),
+        home: SplashScreen(),
       ),
     );
   }
