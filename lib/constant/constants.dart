@@ -7,9 +7,9 @@ class Constants {
 
   //Onboarding texts
   static var titleOne = "Plan your events with us";
-  static var descriptionOne = "Birthdays";
-  static var titleTwo = "Weddings";
+  static var descriptionOne = "";
+  static var titleTwo = "Make them memorable ";
   static var descriptionTwo = "";
-  static var titleThree = "Corporate events";
-  static var descriptionThree = "Make your events remarkable";
+  static var titleThree = "And special ";
+  static var descriptionThree = "";
 }

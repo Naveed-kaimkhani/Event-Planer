@@ -2,7 +2,9 @@ import 'package:eventplaner/screens/EventTypes/BithdayScreen.dart';
 import 'package:eventplaner/screens/EventTypes/OthersEvent.dart';
 import 'package:eventplaner/screens/EventTypes/weddings.dart';
 import 'package:eventplaner/screens/HomePagev2.dart';
+
 import 'package:eventplaner/screens/UploadEvent.dart';
+import 'package:eventplaner/screens/totalEvents.dart';
 import 'package:eventplaner/screens/userProfile.dart';
 import 'package:eventplaner/screens/welcomePage.dart';
 import 'package:eventplaner/widgets/customizedappBar.dart';
@@ -77,7 +79,21 @@ class _rootPageState extends State<rootPage> {
                         MaterialPageRoute(builder: (context) => UploadEvent()));
                   },
                   child: Text(
-                    'Upload Event',
+                    'Upload event',
+                    style: TextStyle(color: Constants.primaryColor),
+                  ),
+                ),
+              ),
+              ListTile(
+                iconColor: Constants.primaryColor,
+                leading: Icon(Icons.man),
+                title: InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => TotalEvents()));
+                  },
+                  child: Text(
+                    'All your events',
                     style: TextStyle(color: Constants.primaryColor),
                   ),
                 ),
