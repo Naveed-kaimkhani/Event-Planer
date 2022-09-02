@@ -37,12 +37,11 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => UserDetailsProvider()),
       ],
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          //      home: SignUpPage(),
+        debugShowCheckedModeBanner: false,
+        //      home: SignUpPage(),
 
-          home: Splash()
-          //SplashScreen(),
-          ),
+        home: Splash(),
+      ),
     );
   }
 }

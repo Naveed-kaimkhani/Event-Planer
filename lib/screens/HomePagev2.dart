@@ -3,6 +3,7 @@ import 'package:eventplaner/rootwidget.dart';
 import 'package:eventplaner/screens/EventTypes/BithdayScreen.dart';
 import 'package:eventplaner/screens/EventTypes/weddings.dart';
 import 'package:eventplaner/widgets/Containerwidgets.dart';
+import 'package:eventplaner/widgets/searchbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -80,40 +81,40 @@ class _HomePagev2State extends State<HomePagev2> {
             Center(
               child: Container(
                 margin: EdgeInsets.only(top: 135),
-                width: 350,
-                child: Row(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
-                  // mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.search,
-                        color: Colors.black.withOpacity(.6),
-                      ),
-                    ),
-                    const Expanded(
-                        child: TextField(
-                      showCursor: false,
-                      decoration: InputDecoration(
-                        hintText: 'Search',
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                      ),
-                    )),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.mic,
-                        color: Colors.black.withOpacity(.6),
-                      ),
-                    ),
-                  ],
+
+                child: SearchBarWidget(
+                  hasBackButton: false,
+                  isReadOnly: true,
                 ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                ),
+                // Row(
+                //   // crossAxisAlignment: CrossAxisAlignment.start,
+                //   // mainAxisAlignment: MainAxisAlignment.start,
+                //   children: [
+                //     Padding(
+                //       padding: const EdgeInsets.all(8.0),
+                //       child: Icon(
+                //         Icons.search,
+                //         color: Colors.black.withOpacity(.6),
+                //       ),
+                //     ),
+                //     const Expanded(
+                //         child: TextField(
+                //       showCursor: false,
+                //       decoration: InputDecoration(
+                //         hintText: 'Search',
+                //         border: InputBorder.none,
+                //         focusedBorder: InputBorder.none,
+                //       ),
+                //     )),
+                //     Padding(
+                //       padding: const EdgeInsets.all(8.0),
+                //       child: Icon(
+                //         Icons.mic,
+                //         color: Colors.black.withOpacity(.6),
+                //       ),
+                //     ),
+                //   ],
+                // ),
               ),
             ),
           ]),

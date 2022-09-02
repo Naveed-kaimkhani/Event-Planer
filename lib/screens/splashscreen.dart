@@ -28,15 +28,18 @@ class _SplashScreenState extends State<SplashScreen> {
     return Container(
         color: Colors.white,
         child: Center(
-          child: Text("Bliss",
-              style: GoogleFonts.pacifico(
-                textStyle: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 50,
-                  letterSpacing: 2.05,
-                  color: Constants.primaryColor,
-                ),
-              )),
-        ));
+            child: Image(
+          image: AssetImage("assets/Web 1920 – 1.png"),
+        )
+            //  Text("Bliss",
+            //     style: GoogleFonts.pacifico(
+            //       textStyle: TextStyle(
+            //         fontWeight: FontWeight.w700,
+            //         fontSize: 50,
+            //         letterSpacing: 2.05,
+            //         color: Constants.primaryColor,
+            //       ),
+            //     )),
+            ));
   }
 }
