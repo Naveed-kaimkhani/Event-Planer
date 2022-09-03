@@ -42,7 +42,7 @@ class SearchBarWidget extends StatelessWidget with PreferredSizeWidget {
           SizedBox(
             //hasBackButton ? screenSize.width * 0.8 : screenSize.width * 0.5,
 
-            width: screenSize.width * 0.6,
+            width: screenSize.width * 0.8,
             child: Center(
               child: Container(
                 decoration: BoxDecoration(
@@ -50,7 +50,7 @@ class SearchBarWidget extends StatelessWidget with PreferredSizeWidget {
                     BoxShadow(
                       color: Colors.black.withOpacity(0.2),
                       blurRadius: 8,
-                      spreadRadius: 1,
+                      spreadRadius: 2,
                       offset: const Offset(0, 5),
                     ),
                   ],
@@ -72,22 +72,18 @@ class SearchBarWidget extends StatelessWidget with PreferredSizeWidget {
                     }
                   },
                   decoration: InputDecoration(
+                    // icon: Icon(
+                    //   Icons.search,
+                    //   color: Colors.white,
+                    // ),
                     hintText: "Search Events",
                     fillColor: Colors.white,
                     filled: true,
                     border: border,
-                    focusedBorder: border,
+                    //focusedBorder: border,
                   ),
                 ),
               ),
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.mic_none_outlined,
-              size: 20,
-              color: Colors.white,
             ),
           ),
         ],

@@ -1,5 +1,5 @@
+import 'package:eventplaner/constant/constants.dart';
 import 'package:flutter/material.dart';
-
 
 import '../widgets/searchbar.dart';
 
@@ -10,8 +10,13 @@ class Search_Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: SearchBarWidget(isReadOnly: false, hasBackButton:true),
-      ),
+          appBar: AppBar(
+        backgroundColor: Constants.primaryColor,
+        actions: [
+          Center(
+              child: SearchBarWidget(isReadOnly: false, hasBackButton: false)),
+        ],
+      )),
     );
   }
 }

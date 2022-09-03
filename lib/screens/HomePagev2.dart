@@ -48,7 +48,7 @@ class _HomePagev2State extends State<HomePagev2> {
   @override
   // void initState() {
   //   getData();
-  //  // Firestore_method().getUserDetails();
+   // Firestore_method().getUserDetails();
   //   super.initState();
   // }
 

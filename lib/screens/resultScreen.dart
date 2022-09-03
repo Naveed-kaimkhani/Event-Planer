@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eventplaner/Model/eventModel.dart';
+import 'package:eventplaner/constant/constants.dart';
 import "package:flutter/material.dart";
 
 import '../widgets/searchbar.dart';
-
 
 class ResultScreen extends StatelessWidget {
   final String query;
@@ -13,9 +13,14 @@ class ResultScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: SearchBarWidget(
-          isReadOnly: false,
-          hasBackButton: true,
+        appBar: AppBar(
+          actions: [
+            SearchBarWidget(
+              isReadOnly: false,
+              hasBackButton: false,
+            ),
+          ],
+          backgroundColor: Constants.primaryColor,
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,51 +53,50 @@ class ResultScreen extends StatelessWidget {
             //   height: 5.h,
             // ),
             Expanded(
-              child: FutureBuilder(
-          future: FirebaseFirestore.instance.collection("events").where("Category" , isEqualTo: query).get(),
-          builder: (context,
-              AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting)
-              return Center(child: Text("Nothing to show"),);
-            else {
-
-           return GridView.builder(
-                itemCount: snapshot.data!.docs.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  childAspectRatio: 2 / 3.3,
-                ),
-                itemBuilder: (context, index) {
-                  eventModel event=eventModel.fromJson(snapshot.data!.docs[index].data());
-                  return ResultsWidget(
-                    event:event,
-                        
-                  );
-                },
-              );
-            }
-              }
-            )     
-            )
+                child: FutureBuilder(
+                    future: FirebaseFirestore.instance
+                        .collection("events")
+                        .where("Category", isEqualTo: query)
+                        .get(),
+                    builder: (context,
+                        AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
+                            snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting)
+                        return Center(
+                          child: Column(
+                            children: [
+                              Image(
+                                image: AssetImage(
+                                    "assets/undraw_Not_found_re_44w9.png"),
+                              ),
+                              Text("Nothing to show"),
+                            ],
+                          ),
+                        );
+                      else {
+                        return GridView.builder(
+                          itemCount: snapshot.data!.docs.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            childAspectRatio: 2 / 3.3,
+                          ),
+                          itemBuilder: (context, index) {
+                            eventModel event = eventModel
+                                .fromJson(snapshot.data!.docs[index].data());
+                            return ResultsWidget(
+                              event: event,
+                            );
+                          },
+                        );
+                      }
+                    }))
           ],
         ),
       ),
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 class ResultsWidget extends StatelessWidget {
   final eventModel event;
@@ -113,7 +117,7 @@ class ResultsWidget extends StatelessWidget {
         //     ));
         // },
         child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal:10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               SizedBox(
@@ -130,7 +134,7 @@ class ResultsWidget extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              
+
               // Padding(
               //   padding: const EdgeInsets.only(bottom:5),
               //   child: SizedBox(
@@ -139,12 +143,11 @@ class ResultsWidget extends StatelessWidget {
               //       child:RatingStatWidget(rating: product.rating)),
               //   ),
               // ),
-            SizedBox(
-                height: 20,
-                child: FittedBox(
-                  child:Text(event.charges.toString()),
-                  )
-                  ),
+              SizedBox(
+                  height: 20,
+                  child: FittedBox(
+                    child: Text(event.charges.toString()),
+                  )),
             ])));
   }
 }
