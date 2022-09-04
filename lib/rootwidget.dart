@@ -64,7 +64,7 @@ class _rootPageState extends State<rootPage> {
                 title: InkWell(
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => UserProfile()));
+                        MaterialPageRoute(builder: (context) => UserProfile2()));
                   },
                   child: Text('My Profile',
                       style: TextStyle(color: Constants.primaryColor)),

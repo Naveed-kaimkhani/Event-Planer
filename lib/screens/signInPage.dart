@@ -1,5 +1,6 @@
 import 'package:eventplaner/constant/inputfields.dart';
 import 'package:eventplaner/screens/EventTypes/weddings.dart';
+import 'package:eventplaner/screens/HomePagev2.dart';
 
 import 'package:eventplaner/screens/signupPage.dart';
 import 'package:flutter/material.dart';
@@ -26,17 +27,16 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   TextEditingController eController = TextEditingController();
-  String sPassword = "";
+  bool isLoading = false;
+  TextEditingController pController = TextEditingController();
   String sEmail = "";
-  bool showPassword = false;
+  String sPassword = "";
   bool showConfirmPassword = false;
+  bool showPassword = false;
+
   void togglePasswordVisibility() {
     setState(() => showPassword = !showPassword);
   }
-
-  TextEditingController pController = TextEditingController();
-
-  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -104,6 +104,7 @@ class _SignInState extends State<SignIn> {
                   color: Color(0x26741b47),
                 ),
                 child: TextField(
+                  controller: pController,
                   decoration: InputDecoration(
                     hintText: "Password",
                     prefixIcon: Icon(
@@ -147,11 +148,44 @@ class _SignInState extends State<SignIn> {
               GestureDetector(
                 onTap: () {
                   Navigator.pushReplacement(
-                      context,
-                      PageTransition(
-                          child: const rootPage(),
-                          type: PageTransitionType.bottomToTop));
+                      context, MaterialPageRoute(builder: (_) => rootPage()));
                 },
+                // onTap: () async {
+                //   //  authentication_methods
+                //   // Future<String> output="something";
+                //   setState(() {
+                //     isLoading = true;
+                //   });
+                //   String output = await authentication_methods.SignInUsers(
+                //     email: eController.text,
+                //     password: pController.text,
+                //   );
+
+                //   // //    if (output=="SignIn Successfully") {
+                //   // Navigator.pushReplacement(context,
+                //   //     MaterialPageRoute(builder: (_) => HomePage()));
+                //   // } else {
+                //   //   Utils.showSnackBar(context: context, content: output.toString());
+                //   // }
+
+                //   if (output == "SignIn Successfully") {
+                //     await Provider.of<UserDetailsProvider>(context,
+                //             listen: false)
+                //         .getData();
+                //     setState(() {
+                //       isLoading = false;
+                //     });
+                //     Navigator.pushReplacement(
+                //         context, MaterialPageRoute(builder: (_) => rootPage()));
+                //   } else {
+                //     // Utils.showSnackBar(
+                //     //     context: context, content: output.toString());
+                //     Fluttertoast.showToast(msg: output.toString());
+                //   }
+
+                // print(output);
+                //  Utils.showSnackBar(context: context, content: output.toString());
+
                 child: Container(
                   width: size.width,
                   decoration: BoxDecoration(
@@ -162,42 +196,6 @@ class _SignInState extends State<SignIn> {
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                   child: Center(
                       child: GestureDetector(
-                    onTap: () async {
-                      //  authentication_methods
-                      // Future<String> output="something";
-                      setState(() {
-                        isLoading = true;
-                      });
-                      String output = await authentication_methods.SignInUsers(
-                        email: eController.text,
-                        password: pController.text,
-                      );
-
-                      // //    if (output=="SignIn Successfully") {
-                      // Navigator.pushReplacement(context,
-                      //     MaterialPageRoute(builder: (_) => HomePage()));
-                      // } else {
-                      //   Utils.showSnackBar(context: context, content: output.toString());
-                      // }
-
-                      if (output == "SignIn Successfully") {
-                        await Provider.of<UserDetailsProvider>(context,
-                                listen: false)
-                            .getData();
-                        setState(() {
-                          isLoading = false;
-                        });
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (_) => rootPage()));
-                      } else {
-                        // Utils.showSnackBar(
-                        //     context: context, content: output.toString());
-                        Fluttertoast.showToast(msg: output.toString());
-                      }
-
-                      // print(output);
-                      //  Utils.showSnackBar(context: context, content: output.toString());
-                    },
                     child: Center(
                         child: isLoading
                             ? Row(

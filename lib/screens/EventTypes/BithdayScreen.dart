@@ -162,8 +162,8 @@ class _BirthdaysPageState extends State<BirthdaysPage> {
                       "Micky Mouse themed Birthday Party",
                       "package:40,000 Rs only",
                       "This is micky mouse themed birthday party. Organized for first birthday",
-                      Image(image: AssetImage("assets/anousha.jpeg")),
-                      "Syeda Anousha"),
+                      Image(image: AssetImage("assets/naveed.jpg")),
+                      "Naveed KaimKhani"),
                   // allImagesContainer(
                   //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
                   allImagesContainer(
@@ -181,7 +181,7 @@ class _BirthdaysPageState extends State<BirthdaysPage> {
                       Image(image: AssetImage("assets/birthf.jpg")),
                       Image(image: AssetImage("assets/w4.jpg")),
                       Image(image: AssetImage("assets/w4.jpg")),
-                      "Blue themed birhday party",
+                      "Golden themed party",
                       "package:4000Rs",
                       "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
                       Image(image: AssetImage("assets/account.png")),
@@ -267,7 +267,7 @@ class _BirthdaysPageState extends State<BirthdaysPage> {
             // ),
             Container(
               child: Row(children: [
-                Text("  All Designs",
+                Text("  All ",
                     style: GoogleFonts.pacifico(
                       textStyle: const TextStyle(
                         fontWeight: FontWeight.w500,
@@ -293,8 +293,8 @@ class _BirthdaysPageState extends State<BirthdaysPage> {
                       Image(image: AssetImage("assets/birthdayfinal5.jpg")),
                       Image(image: AssetImage("assets/birthdayfinal4.1.jpg")),
                       Image(image: AssetImage("assets/birthfayfinalj.jpg")),
-                      "Blue themed birhday party",
-                      "package:4000Rs",
+                      "1st birhday party",
+                      "package:2000Rs",
                       "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
                       Image(image: AssetImage("assets/account.png")),
                       "Username"),
@@ -305,7 +305,7 @@ class _BirthdaysPageState extends State<BirthdaysPage> {
                       Image(image: AssetImage("assets/birtdhayfinal3.jpg")),
                       Image(image: AssetImage("assets/w4.jpg")),
                       Image(image: AssetImage("assets/w4.jpg")),
-                      "Blue themed birhday party",
+                      "Boss baby themed party",
                       "package:4000Rs",
                       "This event is xys,This event is xys,This event is xys,This event is xys,This event is xys",
                       Image(image: AssetImage("assets/account.png")),

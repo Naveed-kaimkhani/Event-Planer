@@ -3,6 +3,7 @@ import 'package:eventplaner/Model/eventModel.dart';
 import 'package:eventplaner/constant/constants.dart';
 import "package:flutter/material.dart";
 
+import '../widgets/Containerwidgets.dart';
 import '../widgets/searchbar.dart';
 
 class ResultScreen extends StatelessWidget {
@@ -53,45 +54,67 @@ class ResultScreen extends StatelessWidget {
             //   height: 5.h,
             // ),
             Expanded(
-                child: FutureBuilder(
-                    future: FirebaseFirestore.instance
-                        .collection("events")
-                        .where("Category", isEqualTo: query)
-                        .get(),
-                    builder: (context,
-                        AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
-                            snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting)
-                        return Center(
-                          child: Column(
-                            children: [
-                              Image(
-                                image: AssetImage(
-                                    "assets/undraw_Not_found_re_44w9.png"),
-                              ),
-                              Text("Nothing to show"),
-                            ],
-                          ),
-                        );
-                      else {
-                        return GridView.builder(
-                          itemCount: snapshot.data!.docs.length,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            childAspectRatio: 2 / 3.3,
-                          ),
-                          itemBuilder: (context, index) {
-                            eventModel event = eventModel
-                                .fromJson(snapshot.data!.docs[index].data());
-                            return ResultsWidget(
-                              event: event,
-                            );
-                          },
-                        );
-                      }
-                    }))
-          ],
+                  child: GridView(
+                scrollDirection: Axis.vertical,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 1, mainAxisSpacing: 10.0),
+                children: <Widget>[
+                
+                  // allImagesContainer(
+                  //     Image(image: AssetImage("assets/s3.jpeg")), "", ""),
+              allImagesContainer(
+                      context,
+                      Image(image: AssetImage("assets/w3.jpg")),
+                      Image(image: AssetImage("assets/w4.jpg")),
+                      Image(image: AssetImage("assets/w4.jpg")),
+                      "Golden themed wedding ",
+                      "package:4000Rs",
+                      "",
+                      Image(image: AssetImage("assets/account.png")),
+                      "Username"),
+                
+                ],
+              ),
+                
+                //  FutureBuilder(
+                //     future: FirebaseFirestore.instance
+                //         .collection("events")
+                //         .where("Category", isEqualTo: query)
+                //         .get(),
+                //     builder: (context,
+                //         AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
+                //             snapshot) {
+                //       if (snapshot.connectionState == ConnectionState.waiting)
+                //         return Center(
+                //           child: Column(
+                //             children: [
+                //               Image(
+                //                 image: AssetImage(
+                //                     "assets/undraw_Not_found_re_44w9.png"),
+                //               ),
+                //               Text("Nothing to show"),
+                //             ],
+                //           ),
+                //         );
+                //       else {
+                //         return GridView.builder(
+                //           itemCount: snapshot.data!.docs.length,
+                //           gridDelegate:
+                //               const SliverGridDelegateWithFixedCrossAxisCount(
+                //             crossAxisCount: 3,
+                //             childAspectRatio: 2 / 3.3,
+                //           ),
+                //           itemBuilder: (context, index) {
+                //             eventModel event = eventModel
+                //                 .fromJson(snapshot.data!.docs[index].data());
+                //             return ResultsWidget(
+                //               event: event,
+                //             );
+                //           },
+                //         );
+                //       }
+                //     }))
+        )],
         ),
       ),
     );

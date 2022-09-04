@@ -1,6 +1,9 @@
 import 'package:eventplaner/screens/signInPage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import '../constant/constants.dart';
+import '../services/authentication_methods.dart';
 // import 'screens/signin_page.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -26,8 +29,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             padding: const EdgeInsets.only(right: 20, top: 20),
             child: InkWell(
               onTap: () {
-                Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (_) => SignIn()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (_) => WelcomeScreen()));
               }, //to login screen. We will update later
               child: const Text(
                 'Skip',

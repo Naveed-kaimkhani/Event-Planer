@@ -268,7 +268,7 @@ class _WeddingsPageState extends State<WeddingsPage> {
             //),
             Container(
               child: Row(children: [
-                Text("  All Desgins",
+                Text("  All ",
                     style: GoogleFonts.pacifico(
                       textStyle: const TextStyle(
                         fontWeight: FontWeight.w500,

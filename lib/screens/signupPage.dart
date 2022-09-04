@@ -160,6 +160,7 @@ class _SignUpState extends State<SignUp> {
                   color: Color(0x26741b47),
                 ),
                 child: TextField(
+                  controller: PassController,
                   decoration: InputDecoration(
                     hintText: "Password",
                     prefixIcon: Icon(
